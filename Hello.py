@@ -30,11 +30,10 @@ print(f"The sum is {sum:.2f},The product is {product:.2f},The average is {averag
 talents = float(input("input talents: "))
 pounds = float(input("input pounds: "))
 lots = float(input("input lots: "))
-m = lots * 13.3 + pounds * 13.3 * 32 + talents * 13.3 * 32 *20
-kilograms = m // 1000
-grams = m % 1000
+total = lots * 13.3 + pounds * 13.3 * 32 + talents * 13.3 * 32 *20
+kilograms = total // 1000
+grams = total % 1000
 print(f"The weight in modern units: \n{kilograms:.0f} kilograms and {grams:.2f} grams.")
-
 
 ##2.6
 n1 = random.randint(0, 9)
