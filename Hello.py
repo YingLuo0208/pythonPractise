@@ -35,7 +35,7 @@ kilograms = total // 1000
 grams = total % 1000
 print(f"The weight in modern units: \n{kilograms:.0f} kilograms and {grams:.2f} grams.")
 
-##2.6
+##2.6 my answer ：
 n1 = random.randint(0, 9)
 n2 = random.randint(0, 9)
 n3 = random.randint(0, 9)
@@ -47,6 +47,12 @@ nn3 = random.randint(1, 6)
 nn4 = random.randint(1, 6)
 code2 = nn1 , nn2 , nn3 , nn4
 print(f'code2 is : {code2}')
+
+## GPT ：
+code1 = tuple(random.randint(0, 9) for _ in range(3))
+print(f'code1 is: {code1}')
+code2 = tuple(random.randint(1, 6) for _ in range(4))
+print(f'code2 is: {code2}')
 
 
 ##3
@@ -61,7 +67,7 @@ if length >= 42:
 else:
     print("A zander must be 42 centimeters or longer to meet the size limit.\n"
            "Please release the fish back into the lake.")
-    
+           
 
 ##2.Write a program that asks the user to enter the cabin class of a cruise ship
 # and then prints out a written description according to the list below.
@@ -71,6 +77,7 @@ else:
 ##  B: windowless cabin above the car deck.
 ##  C: windowless cabin below the car deck.
 ##  If the user enters an invalid cabin class, the program outputs an error message Invalid cabin class.
+## my answer ：
 cabin_class = input("Please enter the cabin class of a cruise ship:")
 if cabin_class == "LUX":
     print("LUX: upper-deck cabin with a balcony.")
@@ -83,11 +90,27 @@ elif cabin_class == "C":
 else:
     print('Invalid cabin class.')
 
+## GPT ：
+cabin_classes = {
+    "LUX": "LUX: upper-deck cabin with a balcony.",
+    "A": "A: above the car deck, equipped with a window.",
+    "B": "B: windowless cabin above the car deck.",
+    "C": "C: windowless cabin below the car deck."
+}
+
+cabin_class = input("Please enter the cabin class of a cruise ship: ")
+
+if cabin_class in cabin_classes:
+    print(cabin_classes[cabin_class])
+else:
+    print("Invalid cabin class.")
+    
 
 ##3.Write a program that asks for the biological gender and hemoglobin value (g/l).
 # The program the notifies the user if the hemoglobin value is low, normal or high.
 ##  A normal hemoglobin value for adult females is between 117-155 g/l.
 ##  A normal hemoglobin value for adult males is between 134-167 g/l.
+## my answer ：
 gender = input("Please enter your biological gender(Male/Female): ")
 if gender == "Male":
     value = float(input("Please enter your hemoglobin value: "))
@@ -102,6 +125,26 @@ elif gender == "Female":
     if value > 167:
         print("Your hemoglobin is high.")
     elif value < 134:
+        print("Your hemoglobin is low.")
+    else:
+        print("Your hemoglobin is normal.")
+else:
+    print("Input error.")
+
+
+## GPT ：
+gender = input("Please enter your biological gender (Male/Female): ")
+
+if gender == "Male" or gender == "Female":
+    value = float(input("Please enter your hemoglobin value: "))
+
+    # 设置性别对应的血红蛋白阈值
+    high_threshold = 155 if gender == "Male" else 167
+    low_threshold = 117 if gender == "Male" else 134
+
+    if value > high_threshold:
+        print("Your hemoglobin is high.")
+    elif value < low_threshold:
         print("Your hemoglobin is low.")
     else:
         print("Your hemoglobin is normal.")
@@ -176,9 +219,8 @@ else:
 # Write a program that asks the user how many random points to generate,
 # and then calculates the approximate value of pi using the method explained above.
 # At the end, the program prints out the approximation of pi to the user.
-# (Notice that it is easy to test if a point falls inside circle A by testing if it fulfills the inequation x^2+y^2<1.).
-
-
+# (Notice that it is easy to test if a point falls inside circle A by testing 
+# if it fulfills the inequation x^2+y^2<1.).
 
 
 
