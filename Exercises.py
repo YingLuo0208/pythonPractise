@@ -49,8 +49,8 @@ code2 = nn1 , nn2 , nn3 , nn4
 print(f'code2 is : {code2}')
 
 
-##3
-##1.Write a program that asks a fisher the length of a zander in centimeters.
+##3.1
+# Write a program that asks a fisher the length of a zander in centimeters.
 # If the zander does not fulfill the size limit,
 # the program instructs to release the fish back into the lake
 # and notifies the user of how many centimeters below the size limit the caught fish was.
@@ -63,7 +63,8 @@ else:
            "Please release the fish back into the lake.")
            
 
-##2.Write a program that asks the user to enter the cabin class of a cruise ship
+##3.2
+# Write a program that asks the user to enter the cabin class of a cruise ship
 # and then prints out a written description according to the list below.
 # You must use an if/elif/else structure in your solution.
 ##  LUX: upper-deck cabin with a balcony.
@@ -87,7 +88,8 @@ else:
 
     
 
-##3.Write a program that asks for the biological gender and hemoglobin value (g/l).
+##3.3
+# Write a program that asks for the biological gender and hemoglobin value (g/l).
 # The program the notifies the user if the hemoglobin value is low, normal or high.
 ##  A normal hemoglobin value for adult females is between 117-155 g/l.
 ##  A normal hemoglobin value for adult males is between 134-167 g/l.
@@ -113,7 +115,8 @@ else:
     print("Input error.")
 
 
-##4.Write a program that asks the user to enter a year
+##3.4
+# Write a program that asks the user to enter a year
 # and notifies the user whether the input year is a leap year.
 # A year is a leap year if it is divisible by four.
 # However, years divisible by 100 are leap years only if they are also divisible by 400.
@@ -125,25 +128,28 @@ else:
 
 
 
-##4
-##1.Write a program that uses a while loop to print out all numbers divisible by three in the range of 1-1000.
+##4.1
+# Write a program that uses a while loop to print out all numbers divisible by three in the range of 1-1000.
 
 
 
-##2.Write a program that converts inches to centimeters until the user inputs a negative value.
+##4.2
+# Write a program that converts inches to centimeters until the user inputs a negative value.
 # Then the program ends.
 
 
 
 
-##3.Write a program that asks the user to enter numbers until they enter an empty string to quit.
+##4.3
+# Write a program that asks the user to enter numbers until they enter an empty string to quit.
 # Finally, the program prints out the smallest and largest number from the numbers it received.
 
 
 
 
 
-##4.Write a game where the computer draws a random integer between 1 and 10.
+##4.4
+# Write a game where the computer draws a random integer between 1 and 10.
 # The user tries to guess the number until they guess the right number.
 # After each guess the program prints out a text: Too high, Too low or Correct.
 # Notice that the computer must not change the number between guesses.
@@ -152,7 +158,8 @@ else:
 
 
 
-##5.Write a program that asks the user for a username and password.
+##4.5
+# Write a program that asks the user for a username and password.
 # If either or both are incorrect, the program ask the user to enter the username and password again.
 # This continues until the login information is correct or wrong credentials have been entered five times.
 # If the information is correct, the program prints out Welcome.
@@ -163,7 +170,8 @@ else:
 
 
 
-##6.Implement an algorithm for calculating an approximation for the value of pi (π).
+##4.6
+# Implement an algorithm for calculating an approximation for the value of pi (π).
 # Let's assume that A is a unit circle. A unit circle has the radius of one
 # and it is centered at the origin (0,0). Smallest possible square B is drawn around the unit circle
 # so that circle A is completely inside the square.
