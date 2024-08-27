@@ -40,12 +40,64 @@ if gender == "Male" or gender == "Female":
 else:
     print("Input error.")
 
-'''
 
 age = int(input("Enter your age: "))
 weight = int(input("Enter your weight: "))
-if age >= 18 or (age >=18 or age>=15 and weight >=55):
+if age >= 18 or (15 <= age <= 18 and weight >=55):
     print("The medicine can be used.")
 
+age = int(input("Enter your age: "))
+if age >= 18 :
+    print("Your age can be used.")
+elif 15 <= age <= 18 :
+    weight = int(input("Enter your weight: "))
+    if weight >= 55:
+        print("Your age can be used.")
+    else:
+        print("Your age can not be used.")
 
 
+
+your_score = int(input("Enter your score: "))
+if your_score >= 90:
+    print("your grade is A1")
+elif your_score >= 80:
+    print("your grade is A2")
+elif your_score >= 70:
+    print("your grade is B1")
+elif your_score >= 60:
+    print("your grade is B2")
+elif your_score >= 50:
+    print("your grade is C1")
+elif your_score >= 35:
+    print("your grade is C2")
+elif your_score < 35:
+    print("Fail")
+'''
+
+car_wheel = input("Enter your car wheels(2/3/4) : ")
+if car_wheel == "2" :
+    battery = input("If your car have battery?(Y/N) : ")
+    if battery == "Y":
+        print("You have an electric bikes.")
+    elif battery == "N":
+        print("You have a bike.")
+    else:
+        print("Input error.")
+elif car_wheel == "3" :
+    print("You have a tricycle.")
+elif car_wheel == "4" :
+    print("You have a car.")
+else:
+    print("Input error.")
+
+
+age = int(input("Enter your age: "))
+if age>=65:
+    print("You are retired.")
+elif age>=18:
+    print("You are working-age.")
+elif age>=7:
+    print("You are in school.")
+else:
+    print("You are a small child.")
