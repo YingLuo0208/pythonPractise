@@ -1,3 +1,6 @@
+import math
+import random
+
 '''
 ## others ：
 ##2.6
@@ -73,7 +76,7 @@ elif your_score >= 35:
     print("your grade is C2")
 elif your_score < 35:
     print("Fail")
-'''
+
 
 car_wheel = input("Enter your car wheels(2/3/4) : ")
 if car_wheel == "2" :
@@ -101,3 +104,69 @@ elif age>=7:
     print("You are in school.")
 else:
     print("You are a small child.")
+
+
+sun = 0
+counter = 1
+while counter <= 5:
+    sun = sun + counter
+    print(f"the counter is: {counter},and the sun is {sun}")
+    counter = counter + 1
+
+
+i = 1
+n = int(input("Enter a limit: "))
+while i <= n:
+    if i % 2 == 0:
+        print(f"{i} is an even number.")
+    else :
+        print(f"{i} is an odd number.")
+    i = i + 1
+
+
+number = int(input("Enter a number(1-9): "))
+random_number = random.randint(1, 9)
+times = 0
+while True :
+##  times = times + 1  或者加在这里
+    if number != random_number:
+        print("Try again!")
+        number = int(input("Enter a number(1-9): "))
+        times = times + 1
+    else:
+        print("well guessed!")
+
+        break
+print(f"Guessed {times} times")
+
+
+user_input = " "
+while user_input != "exit":
+    user_input = input("Please enter your input: ")
+    print("your typed",user_input)
+
+
+coin = random.choice(['heads', 'tails'])
+times = 1
+while coin != 'heads':
+    print("flipped",coin)
+    coin = random.choice(['heads', 'tails'])
+    times = times + 1
+print("your flipped ",coin,", flipped ",times, "times")
+
+
+first = 1
+while first < 5 :
+    second = 1
+    while second < 5 :
+        print(f"{first} time {second} is ",first * second)
+        second += 1
+    first += 1
+    print("done")
+print("all done")
+
+
+for i in range(5):
+    print(i)
+'''
+

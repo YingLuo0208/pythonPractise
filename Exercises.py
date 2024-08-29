@@ -1,6 +1,7 @@
 import math
 import random
 
+
 ##2.1
 name = input("Enter your name: ")
 print(f"Hello {name}")
@@ -13,7 +14,7 @@ print(f"The area is {area:.2f}")
 ##2.3
 length = float(input("Enter length: "))
 width = float(input("Enter width: "))
-perimeter = (length + width)*2
+perimeter = (length + width) * 2
 area = length * width
 print(f"The perimeter is {perimeter:.2f},The area is {area:.2f}")
 
@@ -21,21 +22,21 @@ print(f"The perimeter is {perimeter:.2f},The area is {area:.2f}")
 num1 = float(input("input number1: "))
 num2 = float(input("input number2: "))
 num3 = float(input("input number3: "))
-sum = num1 +num2 +num3
-product = num1*num2*num3
-average = sum/3
+sum = num1 + num2 + num3
+product = num1 * num2 * num3
+average = sum / 3
 print(f"The sum is {sum:.2f},The product is {product:.2f},The average is {average:.2f}")
 
 ##2.5
 talents = float(input("input talents: "))
 pounds = float(input("input pounds: "))
 lots = float(input("input lots: "))
-total = lots * 13.3 + pounds * 13.3 * 32 + talents * 13.3 * 32 *20
+total = lots * 13.3 + pounds * 13.3 * 32 + talents * 13.3 * 32 * 20
 kilograms = total // 1000
 grams = total % 1000
 print(f"The weight in modern units: \n{kilograms:.0f} kilograms and {grams:.2f} grams.")
 
-##2.6 my answer ：
+##2.6
 n1 = random.randint(0, 9)
 n2 = random.randint(0, 9)
 n3 = random.randint(0, 9)
@@ -49,19 +50,20 @@ code2 = nn1 , nn2 , nn3 , nn4
 print(f'code2 is : {code2}')
 
 
-##3.1
+#3.1
 # Write a program that asks a fisher the length of a zander in centimeters.
 # If the zander does not fulfill the size limit,
 # the program instructs to release the fish back into the lake
 # and notifies the user of how many centimeters below the size limit the caught fish was.
 # A zander must be 42 centimeters or longer to meet the size limit.
+
 length = float(input("The length of a zander in centimeters is: "))
 if length >= 42:
     print("You can keep the fish.")
 else:
     print("A zander must be 42 centimeters or longer to meet the size limit.\n"
            "Please release the fish back into the lake.")
-           
+
 
 ##3.2
 # Write a program that asks the user to enter the cabin class of a cruise ship
@@ -72,7 +74,7 @@ else:
 ##  B: windowless cabin above the car deck.
 ##  C: windowless cabin below the car deck.
 ##  If the user enters an invalid cabin class, the program outputs an error message Invalid cabin class.
-## my answer ：
+
 cabin_class = input("Please enter the cabin class of a cruise ship:")
 if cabin_class == "LUX":
     print("LUX: upper-deck cabin with a balcony.")
@@ -86,14 +88,14 @@ else:
     print('Invalid cabin class.')
 
 
-    
+
 
 ##3.3
 # Write a program that asks for the biological gender and hemoglobin value (g/l).
 # The program the notifies the user if the hemoglobin value is low, normal or high.
 ##  A normal hemoglobin value for adult females is between 117-155 g/l.
 ##  A normal hemoglobin value for adult males is between 134-167 g/l.
-## my answer ：
+
 gender = input("Please enter your biological gender(Male/Female): ")
 if gender == "Male":
     value = float(input("Please enter your hemoglobin value: "))
@@ -120,6 +122,7 @@ else:
 # and notifies the user whether the input year is a leap year.
 # A year is a leap year if it is divisible by four.
 # However, years divisible by 100 are leap years only if they are also divisible by 400.
+
 year = int(input("Enter year: "))
 if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
     print("It is a leap year.")
@@ -129,23 +132,45 @@ else:
 
 
 ##4.1
-# Write a program that uses a while loop to print out all numbers divisible by three in the range of 1-1000.
+#Write a program that uses a while loop to print out all numbers
+#divisible by three in the range of 1-1000.
 
+number = 1
+while number <= 1000:
+    if number % 3 == 0:
+        print(number)
+    number += 1
 
 
 ##4.2
-# Write a program that converts inches to centimeters until the user inputs a negative value.
-# Then the program ends.
+#Write a program that converts inches to centimeters until the user inputs a negative value.
+#Then the program ends.
 
-
+inches = float(input("Enter inches: "))
+while inches > 0:
+    centimeters = inches * 2.54
+    print(f"{inches} inches = {centimeters} centimeters")
+    inches = float(input("Enter inches: "))
+print("program ends")
 
 
 ##4.3
 # Write a program that asks the user to enter numbers until they enter an empty string to quit.
 # Finally, the program prints out the smallest and largest number from the numbers it received.
 
+mix_number = None
+min_number = None
+number = input("Enter numbers: ")
 
+while number != "":
+    number = float(number)
+    if  mix_number is None or mix_number < number :
+        mix_number = number
+    if min_number is None or min_number > number :
+        min_number = number
+    number = input("Enter numbers: ")
 
+print(f"The mix_number is {mix_number},the min_number is {min_number}")
 
 
 ##4.4
@@ -154,8 +179,16 @@ else:
 # After each guess the program prints out a text: Too high, Too low or Correct.
 # Notice that the computer must not change the number between guesses.
 
-
-
+random_num = random.randint(1, 10)
+while True:
+    guess_num = int(input("Guess a number between 1 and 10: "))
+    if guess_num < random_num:
+        print("Too low!")
+    elif guess_num > random_num:
+        print("Too high!")
+    else:
+        print("Correct!")
+        break
 
 
 ##4.5
@@ -166,8 +199,20 @@ else:
 # After five failed attempts the program prints out Access denied.
 # The correct username is python and password rules.
 
-
-
+T_username = "python"
+T_password = "rules"
+time = 0
+while time < 5:
+    time += 1
+    username = input("Enter your name: ")
+    password = input("Enter your password: ")
+    if username == T_username and password == T_password :
+        print("Welcome!")
+        break
+    elif ( username != T_username or password != T_password )and time != 5:
+        print("Try Again")
+    else:
+        print("Access denied")
 
 
 ##4.6
@@ -191,8 +236,19 @@ else:
 # (Notice that it is easy to test if a point falls inside circle A by testing 
 # if it fulfills the inequation x^2+y^2<1.).
 
+point_all = 0
+point_circle = 0
+point_user = int(input("How many points do you want? "))
 
+while point_all < point_user:
+    point_all = point_all + 1
+    x = random.uniform(-1, 1)
+    y = random.uniform(-1, 1)
+    if x ** 2 + y ** 2 <= 1:
+        point_circle = point_circle + 1
 
+pi = 4 * point_circle / point_user
+print(f"The approximation of pi is {pi:.10f}")
 
 
 
