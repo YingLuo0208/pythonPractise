@@ -1,5 +1,6 @@
 import math
 import random
+from random import choice
 
 '''
 ## others ：
@@ -168,5 +169,104 @@ print("all done")
 
 for i in range(5):
     print(i)
+
+
+names = ["Viivi", "Ahmed", "Pekka", "Olga", "Mary"]
+otherNames = ["Allu","Ninni"]
+names.append("Matti")
+names.remove("Pekka")
+#数字代表插入的位置
+names.insert(0, "Teppo")
+#插入列表
+names.extend(otherNames)
+
+print(names)
+
+names.sort()
+print(names)
+
+#返回指定项第一次出现的索引号
+what_index = names.index("Olga")
+print(what_index)
+
+if "Mary" in names:
+    print("Mary found")
+
+for n in names:
+    print(f"Hello, {n}!")
+
+#第一个参数是起点，第二个参数是终点，第三个可选参数定义数字之间的步长。
+for number in range(1,10,2):
+    print(number)
+
+for a in range(2):
+    print(f"hello!,{a}")
 '''
+
+# print(" Maanantai \n Tiistai \n Keskiviikko \n Torstai \n perjantai \n Lauantai \n Sunnuntai \n")
+
+# day = ["Mikä päivä tänään on?","Mikä päivä huomenna on?","Mikä päivä ylihuomenna on?",
+#        "Mikä päivä eilen on?","Mikä päivä toissapäivänä on?"]
+#
+# while True:
+#     user = input("1 is days of week and 2 is unmbers . Enter your number : ")
+#
+#     if user == "1":
+#         today = random.randint(1, 7)
+#         question = random.choice(day)
+#         print("Today is : ", today)
+#         print(question)
+#
+#     if user == "2":
+#         number_1 = random.randint(0, 10)
+#         number_2 = random.randint(0, 10)
+#         print(number_1, " + ", number_2, " = ?")
+
+# name = ["ab","bc","cd","ef"]
+# print(id(name))
+# name [3] = "xy"
+# print(id(name))
+#
+# name = ["ab","bc","cd","ef"]
+# print(id(name[3]))
+# name [3] = "xy"
+# print(id(name[3]))
+
+
+
+# name = []
+# user = input("Enter your name:")
+#
+# while user != "":
+#     if "*" in user:
+#         name_t = user.replace('*', '')
+#         name.append(name_t)
+#     else:
+#         name.append(user)
+#
+#     user = input("Enter your name:")
+#
+# print(name)
+
+
+# def greet():
+#     print("Hello!")
+#     return
+#
+# a = 1
+# while a < 10:
+#     b = 1
+#     while b < 10:
+#         print(f"{a} * {b} = {a*b}")
+#         b += 1
+#     a = a + 1
+
+
+
+
+
+
+
+
+
 

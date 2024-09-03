@@ -2,6 +2,7 @@ import math
 import random
 
 
+
 ##2.1
 name = input("Enter your name: ")
 print(f"Hello {name}")
@@ -233,7 +234,7 @@ while time < 5:
 # Write a program that asks the user how many random points to generate,
 # and then calculates the approximate value of pi using the method explained above.
 # At the end, the program prints out the approximation of pi to the user.
-# (Notice that it is easy to test if a point falls inside circle A by testing 
+# (Notice that it is easy to test if a point falls inside circle A by testing
 # if it fulfills the inequation x^2+y^2<1.).
 
 point_all = 0
@@ -249,6 +250,156 @@ while point_all < point_user:
 
 pi = 4 * point_circle / point_user
 print(f"The approximation of pi is {pi:.10f}")
+
+
+
+## 5.1
+# Write a program that asks the user how many dice to roll.
+# The program rolls all the dice once and prints out the sum of the numbers. Use a for loop.
+
+times = int(input("How many times would you like to roll? : "))
+sum_of_numbers = 0
+
+for i in range(times):
+    roll = random.randint(1, 6)
+    sum_of_numbers = sum_of_numbers + roll
+
+print(sum_of_numbers)
+
+
+## 5.2
+# Write a program that asks the user to enter numbers until they input an empty string to quit.
+# At the end, the program prints out the five greatest numbers sorted in descending order.
+# Hint: You can reverse the order of sorted list items by using the sort method
+# with the reverse=True argument.
+
+numbers = []
+
+while True:
+    user_number = input("Enter a number: ")
+    if user_number == "":
+        break
+    numbers.append(user_number)
+
+numbers.sort(reverse=True)
+first_five_numbers = numbers[:5]
+
+print(first_five_numbers)
+
+
+## 5.3
+# Write a program that asks the user for an integer and tells if the number is a prime number.
+# Prime numbers are number that are only divisible by one or the number itself.
+#   For example, 13 is a prime number as it can only be divided by 1 or 13
+#   so that the result is an integer.
+#   On the other hand, 21 is not a prime number as it is divisible by 3 and 7.
+user_num = int(input("Enter a number: "))
+divided_by = []
+
+if user_num <= 1 :
+    print("Your number is not a prime number.")
+
+elif user_num in { 2,3,5 }:
+    print("Your number is a prime number.")
+
+elif user_num > 5:
+    for i in range(2,user_num,1):
+        if user_num % i == 0 :
+            divided_by.append(i)
+            break
+
+    if len(divided_by) == 0 :
+        print("Your number is a prime number.")
+    else:
+        print("Your number is not a prime number.")
+
+
+## 5.4
+# Write a program that asks the user to enter the names of five cities one by on
+# (use a for loop for reading the names) and stores them into a list structure.
+# Finally, the program prints out the names of the cities one by one, one city per line,
+# in the same order they were read as input.
+# Use a for loop for asking the names and a for/in loop to iterate through the list.
+
+cities = []
+
+for a in range(5):
+    city = input("Enter a city: ")
+    cities.append(city)
+
+for city in cities:
+    print(city)
+
+
+## 6.1
+# Write a function that returns a random dice roll between 1 and 6.
+# The function should not have any parameters.
+# Write a main program that rolls the dice until the result is 6.
+# The main program should print out the result of each roll.
+
+numbers = []
+dice = int(input("How many dice would you like to roll? "))
+sum_dice = 0
+for i in range(dice):
+    roll = random.randint(1, 6)
+    sum_dice += roll
+    numbers.append(roll)
+
+print(numbers)
+print(sum_dice)
+
+
+## 6.2
+# Modify the function above so that it gets the number of sides on the dice as a parameter.
+# With the modified function you can for example roll a 21-sided role-playing dice.
+# The difference to the last exercise is that the dice rolling
+# in the main program continues until the program gets the maximum number on the dice,
+# which is asked from the user at the beginning.
+
+
+
+## 6.3
+# Write a function that gets the quantity of gasoline in American gallons and
+# returns the number converted to litres. Write a main program that asks for
+# a volume in gallons from the user and converts the value to liters.
+# The conversion must be done by using the function.
+# Conversions continue until the user inputs a negative value.
+
+
+
+## 6.4
+# Write a function that gets a list of integers as a parameter.
+# The function returns the sum of all the numbers in the list.
+# For testing, write a main program where you create a list,
+# call the function, and print out the value it returned.
+
+
+
+## 6.5
+# Write a function that gets a list of integers as a parameter.
+# The function returns a second list that is otherwise the same as
+# the original list except that all uneven numbers have been removed.
+# For testing, write a main program where you create a list, call the function,
+# and then print out both the original as well as the cut-down list.
+
+
+
+## 6.6
+# Write a function that receives two parameters:
+# the diameter of a round pizza in centimeters and the price of the pizza in euros.
+# The function calculates and returns the unit price of the pizza per square meter.
+# The main program asks the user to enter the diameter and price of two pizzas
+# and tells the user which pizza provides better value for money
+# (which of them has a lower unit price).
+# You must use the function you wrote for calculating the unit prices.
+
+
+
+
+
+
+
+
 
 
 
