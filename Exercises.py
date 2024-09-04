@@ -2,7 +2,6 @@ import math
 import random
 
 
-
 ##2.1
 name = input("Enter your name: ")
 print(f"Hello {name}")
@@ -337,16 +336,16 @@ for city in cities:
 # Write a main program that rolls the dice until the result is 6.
 # The main program should print out the result of each roll.
 
-numbers = []
-dice = int(input("How many dice would you like to roll? "))
-sum_dice = 0
-for i in range(dice):
-    roll = random.randint(1, 6)
-    sum_dice += roll
-    numbers.append(roll)
+def roll():
+    dice = random.randint(1,6)
+    return dice
 
-print(numbers)
-print(sum_dice)
+while True:
+    result = roll()
+    if result == 6 :
+        print(result)
+        break
+    print(result)
 
 
 ## 6.2
@@ -356,6 +355,20 @@ print(sum_dice)
 # in the main program continues until the program gets the maximum number on the dice,
 # which is asked from the user at the beginning.
 
+def roll(sides):
+    dice = random.randint(1, sides)
+    return dice
+
+dice_mix = int(input("Enter a number: "))
+
+while True:
+    result = roll(dice_mix)
+
+    if result == dice_mix :
+        print(result)
+        print("You rolled the maximum number! ")
+        break
+    print(result)
 
 
 ## 6.3
@@ -365,6 +378,18 @@ print(sum_dice)
 # The conversion must be done by using the function.
 # Conversions continue until the user inputs a negative value.
 
+def gasoline(gallons):
+    litres = gallons * 3.78541
+    return litres
+
+user_gallons = float(input("Enter number of gasoline in American gallons : "))
+
+while user_gallons >= 0 :
+    user_litres = gasoline(user_gallons)
+    print(f"{user_gallons} gallons = {user_litres:.3f} litres.")
+    user_gallons = float(input("Enter number of gasoline in American gallons : "))
+
+print("Error input.")
 
 
 ## 6.4
@@ -373,6 +398,16 @@ print(sum_dice)
 # For testing, write a main program where you create a list,
 # call the function, and print out the value it returned.
 
+def f(list_int):
+    all_numbers = 0
+    for i in list_int:
+        all_numbers = all_numbers + i
+    return all_numbers
+
+numbers = [2,4,6,10]
+
+sum_numbers = f(numbers)
+print(f"The sum of {numbers} is {sum_numbers}")
 
 
 ## 6.5
@@ -382,6 +417,17 @@ print(sum_dice)
 # For testing, write a main program where you create a list, call the function,
 # and then print out both the original as well as the cut-down list.
 
+def n(list_int):
+    for i in list_int[:]:
+        if i % 2 != 0:
+            list_int.remove(i)
+    return list_int
+
+list_create = [1,1,1,1,2,2,3,4,5,56,6,7,8,9]
+print(list_create)
+
+new_list = n(list_create)
+print(new_list)
 
 
 ## 6.6
@@ -393,10 +439,40 @@ print(sum_dice)
 # (which of them has a lower unit price).
 # You must use the function you wrote for calculating the unit prices.
 
+def calculate_unit_price(diameter,price):
+    # Calculate the area of the pizza (in square meters) Diameter is in cm, convert to meters
+    pizza_size = (diameter /100 / 2) ** 2 * math.pi
+    # Calculate the price per square meter
+    unit_price = price / pizza_size
+    return unit_price
 
+# Get user input for the first pizza
+diameter1 = float(input("Enter your first diameter(cm): "))
+price1 = float(input("Enter your first price: "))
 
+# Calculate unit price for the first pizza
+unit_price1 = calculate_unit_price(diameter1,price1)
 
+# Get user input for the second pizza
+diameter2 = float(input("Enter your second diameter(cm): "))
+price2 = float(input("Enter your second price: "))
 
+# Calculate unit price for the second pizza
+unit_price2 = calculate_unit_price(diameter2,price2)
+
+# Compare unit prices and print results
+if unit_price1 < unit_price2:
+    print(f"The first pizza is {unit_price1:.2f} euros/square meter.")
+    print(f"The second pizza is {unit_price2:.2f} euros/square meter.")
+    print("The first pizza has a lower unit price.")
+elif unit_price2 < unit_price1:
+    print(f"The first pizza is {unit_price1:.2f} euros/square meter.")
+    print(f"The second pizza is {unit_price2:.2f} euros/square meter.")
+    print("The second pizza has a lower unit price.")
+else:
+    print(f"The first pizza is {unit_price1:.2f} euros/square meter.")
+    print(f"The second pizza is {unit_price2:.2f} euros/square meter.")
+    print("They have the same unit price.")
 
 
 
