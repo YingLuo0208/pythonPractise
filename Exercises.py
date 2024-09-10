@@ -347,7 +347,7 @@ import random
 # # The function should not have any parameters.
 # # Write a main program that rolls the dice until the result is 6.
 # # The main program should print out the result of each roll.
-#
+
 # def roll():
 #     dice = random.randint(1,6)
 #     return dice
@@ -358,7 +358,7 @@ import random
 #         print(result)
 #         break
 #     print(result)
-#
+
 #
 # ## 6.2
 # # Modify the function above so that it gets the number of sides on the dice as a parameter.
@@ -440,7 +440,7 @@ import random
 #
 # new_list = n(list_create)
 # print(new_list)
-#
+# #
 #
 # ## 6.6
 # # Write a function that receives two parameters:

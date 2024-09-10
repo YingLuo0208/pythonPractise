@@ -341,16 +341,32 @@ for a in range(2):
 #
 # d_x, d_y, d_total, theta
 
+#
+# def remove_odd_numbers(number):
+# # function takes list of integer, removes odd number and return only even number in new list
+#     return[num for num in number if num % 2==0]
+# #test function
+# #creating orignal list of integer
+# original_list=[1,1,1,1,2,2,3,4,5,56,6,7,8,9]
+# #call function to remove odd num
+# second_list=remove_odd_numbers(original_list)
+#
+# #print result
+# print (f"original_list: {original_list}")
+# print (f"second_list:{second_list}")
 
-def remove_odd_numbers(number):
-# function takes list of integer, removes odd number and return only even number in new list
-    return[num for num in number if num % 2==0]
-#test function
-#creating orignal list of integer
-original_list=[1,1,1,1,2,2,3,4,5,56,6,7,8,9]
-#call function to remove odd num
-second_list=remove_odd_numbers(original_list)
 
-#print result
-print (f"original_list: {original_list}")
-print (f"second_list:{second_list}")
+games = {"Monopoly", "Chess", "Cluedo"}
+print(games)
+
+games.add("Dominion")
+print(games)
+
+games.remove("Chess")
+print(games)
+
+games.add("Cluedo")
+print(games)
+
+for g in games:
+    print(g)
