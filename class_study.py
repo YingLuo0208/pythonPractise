@@ -1,6 +1,5 @@
 import math
 import random
-from random import choice
 
 '''
 ## others ：
@@ -260,13 +259,98 @@ for a in range(2):
 #         print(f"{a} * {b} = {a*b}")
 #         b += 1
 #     a = a + 1
+#
+# def num_sum(a,b):
+#     return a+b
+#
+# print(num_sum(2,3))
+#
+#
+# def num_minus(a,b):
+#     return a-b
+#
+# print(num_minus(2,3))
+#
+#
+# def num_multiply(a,b):
+#     return a*b
+#
+# print(num_multiply(2,3))
+#
+#
+# def num_divide(a,b):
+#     if b != 0:
+#         return a/b
+#
+# print(num_divide(2,3))
+#
+# def num_count(a,b):
+#     sum = a + b
+#     minus = a - b
+#     multiply = a * b
+#     divide = a / b
+#     if b != 0:
+#         return sum, minus, multiply, divide
+#
+# print(num_count(2,3))
+#
+# num = [2,3,5,7,9,2,10,434,13,134]
+#
+# num_max = max(num)
+# num_min = min(num)
+#
+# print(num_max)
+# print(num_min)
 
 
+# num.sort(reverse=True)
+# print(num)
+#
+# nun_max = num[0]
+# print(nun_max)
+# num_min = num[-1]
+# print(num_min)
 
 
+# import math
+#
+# # Given values
+# v0 = 6.5  # Initial velocity in m/s
+# a = 0.48  # Acceleration in m/s^2
+# angle = 35  # Angle of wind gust in degrees
+# t = 6.3  # Time in seconds
+#
+# # Convert angle to radians for calculations
+# angle_rad = math.radians(angle)
+#
+# # Components of acceleration
+# a_x = a * math.cos(angle_rad)  # Along the original direction
+# a_y = a * math.sin(angle_rad)  # Perpendicular to the original direction
+#
+# # Displacement along the original direction (d_x)
+# d_x = v0 * t + 0.5 * a_x * t**2
+#
+# # Displacement perpendicular to the original direction (d_y)
+# d_y = 0.5 * a_y * t**2
+#
+# # Magnitude of the total displacement
+# d_total = math.sqrt(d_x**2 + d_y**2)
+#
+# # Direction of the displacement (angle relative to the original direction)
+# theta = math.degrees(math.atan2(d_y, d_x))
+#
+# d_x, d_y, d_total, theta
 
 
+def remove_odd_numbers(number):
+# function takes list of integer, removes odd number and return only even number in new list
+    return[num for num in number if num % 2==0]
+#test function
+#creating orignal list of integer
+original_list=[1,1,1,1,2,2,3,4,5,56,6,7,8,9]
+#call function to remove odd num
+second_list=remove_odd_numbers(original_list)
 
-
-
-
+#print result
+print (f"original_list: {original_list}")
+print (f"second_list:{second_list}")
