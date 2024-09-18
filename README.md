@@ -628,8 +628,66 @@ while True:
         print('Error enter.')
 ```
 ```python
+chooses = {
+    'EFHK': 'Helsinki-Vantaa Airport',
+    'ZBAA': 'Beijing Capital International Airport',
+    'VHHH': 'Hong Kong International Airport',
+    'KLAX': 'Los Angeles International Airport',
+    'YSSY': 'Sydney Kingsford-Smith International Airport',
+    'LFPG': 'Paris Charles de Gaulle Airport',
+    'CYYZ': 'Toronto Pearson International Airport'
+}
+
+def print_airports():
+    # Prints all ICAO codes in columns with five codes per row, left-aligned.
+    if chooses:
+        print("\nHere is the list of available airports:")
+        # 获取所有键
+        keys = list(chooses.keys())
+        num_columns = 5
+        column_width = max(len(key) for key in keys) + 2  # +2 for padding
+        # 打印每行的键
+        for i in range(0, len(keys), num_columns):
+            row_keys = keys[i:i + num_columns]
+            print(''.join(f"{key.ljust(column_width)}" for key in row_keys))
+    else:
+        print("No airports available in the database.")
+
+def add_airport():
+    # Adds a new airport to the database.
+    code_new = input('Please enter the ICAO code of the airport: ').upper()
+    if code_new in chooses:
+        print(f'The ICAO code "{code_new}" already exists in the database.')
+    else:
+        name_new = input('Please enter the name of the airport: ').strip()
+        if name_new:
+            chooses[code_new] = name_new
+            print(f'New airport "{name_new}" with ICAO code "{code_new}" added.')
+        else:
+            print('Error: Airport name cannot be empty.')
+
+def fetch_airport_info():
+    # Fetches and displays information for an existing airport.
+    print_airports()
+    code = input('\nPlease enter the ICAO code: ').upper()
+    if code in chooses:
+        print(f'The name of the airport with ICAO code "{code}" is: {chooses[code]}')
+    else:
+        print(f'Airport with ICAO code "{code}" not found.')
 
 
+while True:
+    print('\n1: Enter a new airport.\n2: Fetch the information of an existing airport.\n3: Quit.')
+    user = input('Please enter a number: ')
+    if user == '1':
+        add_airport()
+    elif user == '2':
+        fetch_airport_info()
+    elif user == '3':
+        print('Quitting the program.')
+        break
+    else:
+        print('Error: Invalid input. Please enter 1, 2, or 3.')
 ```
 
 
