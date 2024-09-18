@@ -355,18 +355,78 @@ for a in range(2):
 # print (f"original_list: {original_list}")
 # print (f"second_list:{second_list}")
 
+#
+# games = {"Monopoly", "Chess", "Cluedo"}
+# print(games)
+#
+# games.add("Dominion")
+# print(games)
+#
+# games.remove("Chess")
+# print(games)
+#
+# games.add("Cluedo")
+# print(games)
+#
+# for g in games:
+#     print(g)
 
-games = {"Monopoly", "Chess", "Cluedo"}
-print(games)
+# num = input("Enter a number: ").split(".")
+# unm_tuple = tuple(a for a in num)
+# print(unm_tuple)
+#
+# l = max(unm_tuple)
+# s = min(unm_tuple)
+# print(l)
+# print(s)
 
-games.add("Dominion")
-print(games)
+# num = input("Enter a number: ").split(".")
+# num_tuple = tuple(int(a) for a in num)  # Converting to floats for proper comparison
+# print(num_tuple)
+#
+# l = max(num_tuple)
+# s = min(num_tuple)
+# print("Largest number:", l)
+# print("Smallest number:", s)
 
-games.remove("Chess")
-print(games)
 
-games.add("Cluedo")
-print(games)
 
-for g in games:
-    print(g)
+# user_input = input("Enter numbers should be seperated by commas : ").split(',')
+#
+# tuple = tuple (x for x in user_input)
+#
+# largest = max(tuple)
+# smallest = min(tuple)
+#
+# print(f"Largest number: {largest}")
+# print(f"Smallest number:{smallest}")
+
+#
+# numbers = {"Viivi":"050-1234567",
+#            "Ahmed":"040-1112223",
+#            "Pekka":"050-7654321"}
+#
+# numbers["Olga"] = "050-1011012"
+# numbers["Mary"] = "0401-2132139"
+
+# print(numbers)
+#
+# for a in numbers:
+#     print(a)   # just print the key
+#     print(numbers[a])   # it can print the value
+
+# my_dict = {
+#     "key1": "value1",
+#     "key2": "value2",
+#     "key3": "value3",
+#     "key4": "value4"
+# }
+#
+# # Convert dictionary items into a list
+# items = list(my_dict.items())
+#
+# # Access the second key-value pair
+# print(f"Second key-value pair: Key = {items[1][0]}, Value ={items[1][1]}")
+
+
+
