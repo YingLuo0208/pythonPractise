@@ -562,8 +562,20 @@ Write a program that asks the user to enter names until he/she enters an empty s
 After each name is read the program either prints out New name or Existing name depending on whether the name was entered for the first time.
 Finally, the program lists out the input names one by one,one below another in any order. Use the set data structure to store the names.
 
-
-
+```python
+names = set()
+while True:
+    name_new = input('Please enter a name (or press Enter to finish): ')
+    if name_new == "":
+        break
+    if name_new in names:
+        print("It was entered.")
+    else:
+        names.add(name_new)
+        print("It's a new name.")
+for a in names:
+    print(a)
+```
 
 ## 7.3
 Write a program for fetching and storing airport data.
@@ -573,8 +585,52 @@ If the user chooses to fetch airport information instead,the program asks for th
 The user can choose a new option as many times they want until they choose to quit.
 (The ICAO code is an identifier that is unique to each airport.For example, the ICAO code of Helsinki-Vantaa Airport is EFHK.You can easily find the ICAO codes of different airports online.)
 
+```python
+chooses = {'EFHK': 'Helsinki-Vantaa Airport',
+           'ZBAA': 'Beijing Capital International Airport',
+           'VHHH': 'Hong Kong International Airport',
+           'KLAX': 'Los Angeles International Airport',
+           'YSSY': 'Sydney Kingsford-Smith International Airport',
+           'LFPG': 'Paris Charles de Gaulle Airport',
+           'CYYZ': 'Toronto Pearson International Airport'}
+while True:
+    print('1:Enter a new airport.\n2:Fetch the information of an existing airport.\n3:Quit.')
+    user = input('Please enter a number ：')
+    if user == '1':
+        code_new = input('Please enter the ICAO code of the airport: ').upper()
+        if code_new in chooses:
+            print(f'The ICAO code "{code_new}" already exists in the database.')
+        else:
+            name_new = input('Please enter the name of the airport: ').strip()
+            if name_new:
+                chooses[code_new] = name_new
+                print(f'New airport "{name_new}" with ICAO code "{code_new}" added.')
+            else:
+                print('Error: Airport name cannot be empty.')
+
+    elif user == '2':
+        if chooses:
+            print("Here is the list of available airports:")
+            for key in chooses.keys():
+                print(key)
+
+            code = input('Please enter the ICAO code: ').upper()
+            if code in chooses:
+                print(f'The name of the airport with ICAO code "{code}" is: {chooses[code]}')
+            else:
+                print(f'Airport not found.')
+        else:
+            print("No airports available in the database.")
+    elif user == '3':
+        print('Quit')
+        break
+    else:
+        print('Error enter.')
+```
+```python
 
 
+```
 
 
 
