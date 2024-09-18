@@ -1,6 +1,6 @@
 import math
 import random
-# Variables and interactive programs
+# 2.Variables and interactive programs
 ## 2.1
 Write a program that asks your name and then greets you by your name: Examples:
 If you enter Viivi as your name, the program will greet you with Hello, Viivi!.
@@ -9,73 +9,72 @@ If you enter Ahmed as your name, the program will greet you with Hello, Ahmed!.
     name = input("Enter your name: ")
     print(f"Hello {name}")
 
-##2.2
-# Write a program that asks the user for the radius of a circle and the prints out the area of the circle.
+## 2.2
+Write a program that asks the user for the radius of a circle and the prints out the area of the circle.
 
-radius = float(input("Enter your radius: "))
-area = math.pi * radius**2
-print(f"The area is {area:.2f}")
+    radius = float(input("Enter your radius: "))
+    area = math.pi * radius**2
+    print(f"The area is {area:.2f}")
 
-##2.3
-# Write a program that asks the user for the length and width of a rectangle.
-# The program then prints out the perimeter and area of the rectangle.
-# The perimeter of a rectangle is the sum of the lengths of each four sides.
+## 2.3
+Write a program that asks the user for the length and width of a rectangle.
+The program then prints out the perimeter and area of the rectangle.
+The perimeter of a rectangle is the sum of the lengths of each four sides.
 
-length = float(input("Enter length: "))
-width = float(input("Enter width: "))
-perimeter = (length + width) * 2
-area = length * width
-print(f"The perimeter is {perimeter:.2f},The area is {area:.2f}")
+    length = float(input("Enter length: "))
+    width = float(input("Enter width: "))
+    perimeter = (length + width) * 2
+    area = length * width
+    print(f"The perimeter is {perimeter:.2f},The area is {area:.2f}")
 
-##2.4
-# Write a program that asks the user for three integer numbers.
-# The program prints out the sum, product, and average of the numbers.
+## 2.4
+Write a program that asks the user for three integer numbers.
+The program prints out the sum, product, and average of the numbers.
 
-num1 = float(input("input number1: "))
-num2 = float(input("input number2: "))
-num3 = float(input("input number3: "))
-sum = num1 + num2 + num3
-product = num1 * num2 * num3
-average = sum / 3
-print(f"The sum is {sum:.2f},The product is {product:.2f},The average is {average:.2f}")
+    num1 = float(input("input number1: "))
+    num2 = float(input("input number2: "))
+    num3 = float(input("input number3: "))
+    sum = num1 + num2 + num3
+    product = num1 * num2 * num3
+    average = sum / 3
+    print(f"The sum is {sum:.2f},The product is {product:.2f},The average is {average:.2f}")
 
-##2.5
-# Write a program that asks the user to enter a mass in medieval units:
-# talents (leiviskä), pounds (naula), and lots (luoti).
-# The program converts the input to full kilograms and grams
-# and outputs the result to the user:
-# One talent is 20 pounds.
-# One pound is 32 lots.
-# One lot is 13,3 grams.
+## 2.5
+Write a program that asks the user to enter a mass in medieval units:
+talents (leiviskä), pounds (naula), and lots (luoti).
+The program converts the input to full kilograms and grams and outputs the result to the user:
+One talent is 20 pounds.
+One pound is 32 lots.
+One lot is 13,3 grams.
 
-talents = float(input("input talents: "))
-pounds = float(input("input pounds: "))
-lots = float(input("input lots: "))
-total = lots * 13.3 + pounds * 13.3 * 32 + talents * 13.3 * 32 * 20
-kilograms = total // 1000
-grams = total % 1000
-print(f"The weight in modern units: \n{kilograms:.0f} kilograms and {grams:.2f} grams.")
+    talents = float(input("input talents: "))
+    pounds = float(input("input pounds: "))
+    lots = float(input("input lots: "))
+    total = lots * 13.3 + pounds * 13.3 * 32 + talents * 13.3 * 32 * 20
+    kilograms = total // 1000
+    grams = total % 1000
+    print(f"The weight in modern units: \n{kilograms:.0f} kilograms and {grams:.2f} grams.")
 
-##2.6
-# Write a program that draws two random combinations of numbers for a combination lock:
-# a 3-digit code where each number is between 0 and 9.
-# a 4-digit code where each number is between 1 and 6.
+## 2.6
+Write a program that draws two random combinations of numbers for a combination lock:
+a 3-digit code where each number is between 0 and 9.
+a 4-digit code where each number is between 1 and 6.
 
-n1 = random.randint(0, 9)
-n2 = random.randint(0, 9)
-n3 = random.randint(0, 9)
-code1 = n1 , n2 , n3
-print(f'code1 is : {code1}')
-nn1 = random.randint(1, 6)
-nn2 = random.randint(1, 6)
-nn3 = random.randint(1, 6)
-nn4 = random.randint(1, 6)
-code2 = nn1 , nn2 , nn3 , nn4
-print(f'code2 is : {code2}')
+    n1 = random.randint(0, 9)
+    n2 = random.randint(0, 9)
+    n3 = random.randint(0, 9)
+    code1 = n1 , n2 , n3
+    print(f'code1 is : {code1}')
+    nn1 = random.randint(1, 6)
+    nn2 = random.randint(1, 6)
+    nn3 = random.randint(1, 6)
+    nn4 = random.randint(1, 6)
+    code2 = nn1 , nn2 , nn3 , nn4
+    print(f'code2 is : {code2}')
 
-
-#3.1
-# Write a program that asks a fisher the length of a zander in centimeters.
+# 3. Conditional structures (if)
+## 3.1
+Write a program that asks a fisher the length of a zander in centimeters.
 # If the zander does not fulfill the size limit,
 # the program instructs to release the fish back into the lake
 # and notifies the user of how many centimeters below the size limit the caught fish was.
