@@ -1,13 +1,13 @@
 import math
 import random
-
+#Variables and interactive programs
 ##2.1
-# Write a program that asks your name and then greets you by your name: Examples:
-# If you enter Viivi as your name, the program will greet you with Hello, Viivi!.
-# If you enter Ahmed as your name, the program will greet you with Hello, Ahmed!.
+Write a program that asks your name and then greets you by your name: Examples:
+If you enter Viivi as your name, the program will greet you with Hello, Viivi!.
+If you enter Ahmed as your name, the program will greet you with Hello, Ahmed!.
 
-name = input("Enter your name: ")
-print(f"Hello {name}")
+    name = input("Enter your name: ")
+    print(f"Hello {name}")
 
 ##2.2
 # Write a program that asks the user for the radius of a circle and the prints out the area of the circle.
