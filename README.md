@@ -178,6 +178,12 @@ while number <= 1000:
         print(number)
     number += 1
 ```
+```python
+i = 0
+while i <= 1000:
+    print(i)
+    i += 3
+```
 
 ## 4.2
 Write a program that converts inches to centimeters until the user inputs a negative value.
