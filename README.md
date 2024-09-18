@@ -198,7 +198,28 @@ else:
     print("Input error.")
 ```
 ```monospace
+Please enter your biological gender(Male/Female): Male
+Please enter your hemoglobin value: 167
+Your hemoglobin is normal.
 
+Please enter your biological gender(Male/Female): Male
+Please enter your hemoglobin value: 13
+Your hemoglobin is low.
+
+Please enter your biological gender(Male/Female): Male
+Please enter your hemoglobin value: 300
+Your hemoglobin is high.
+
+Please enter your biological gender(Male/Female): ww
+Input error.
+
+Please enter your biological gender(Male/Female): Female
+Please enter your hemoglobin value: 122
+Your hemoglobin is normal.
+
+Please enter your biological gender(Male/Female): Female
+Please enter your hemoglobin value: 167
+Your hemoglobin is high.
 ```
         
 ## 3.4
@@ -214,7 +235,14 @@ else:
     print("It is not a leap year.")
 ```
 ```monospace
+Enter year: 2000
+It is a leap year.
 
+Enter year: 1900
+It is not a leap year.
+
+Enter year: 2024
+It is a leap year.
 ```
 
 # 4. While loops (while)
@@ -228,6 +256,14 @@ while number <= 1000:
         print(number)
     number += 1
 ```
+```monospace
+3
+6
+9
+....
+996
+999
+```
 ```python
 i = 0
 while i <= 1000:
@@ -235,7 +271,13 @@ while i <= 1000:
     i += 3
 ```
 ```monospace
-
+0
+3
+6
+9
+....
+996
+999
 ```
 
 ## 4.2
@@ -251,7 +293,10 @@ while inches > 0:
 print("program ends")
 ```
 ```monospace
-
+Enter inches: 1
+1.0 inches = 2.54 centimeters
+Enter inches: -1
+program ends
 ```
 
 ## 4.3
@@ -275,7 +320,13 @@ while number != "":
 print(f"The max_number is {max_number},the min_number is {min_number}")
 ```
 ```monospace
-
+Enter numbers: 2
+Enter numbers: 55
+Enter numbers: 3
+Enter numbers: 7
+Enter numbers: 90
+Enter numbers: 
+The max_number is 90.0,the min_number is 2.0
 ```
 
 The second way:
@@ -293,7 +344,14 @@ number_min = min(numbers)
 print(number_max, number_min)
 ```
 ```monospace
-
+Enter numbers: 2
+Enter numbers: 55
+Enter numbers: 3
+Enter numbers: 7
+Enter numbers: 90
+Enter numbers: 
+['2', '55', '3', '7', '90']
+90 2
 ```
 
 ## 4.4
@@ -317,7 +375,14 @@ while True:
         break
 ```
 ```monospace
-
+Guess a number between 1 and 10: 3
+Too low!
+Guess a number between 1 and 10: 5
+Too low!
+Guess a number between 1 and 10: 7
+Too high!
+Guess a number between 1 and 10: 6
+Correct!
 ```
 
 ## 4.5
@@ -345,7 +410,31 @@ while time < 5:
         print("Access denied")
 ```
 ```monospace
+Enter your name: eee
+Enter your password: eee
+Try Again
+Enter your name: eee
+Enter your password: eee
+Try Again
+Enter your name: eee
+Enter your password: eee
+Try Again
+Enter your name: eee
+Enter your password: eee
+Try Again
+Enter your name: eee
+Enter your password: eee
+Access denied
 
+Enter your name: eee
+Enter your password: rules
+Try Again
+Enter your name: python
+Enter your password: eee
+Try Again
+Enter your name: python
+Enter your password: rules
+Welcome!
 ```
 
 ## 4.6
@@ -383,7 +472,8 @@ pi = 4 * point_circle / point_user
 print(f"The approximation of pi is {pi:.10f}")
 ```
 ```monospace
-
+How many points do you want? 1000000
+The approximation of pi is 3.1406440000
 ```
     
 # 5. List structures and iterative loops (for)
@@ -406,9 +496,10 @@ print(sum_of_numbers)
 
 ```
 ```monospace
-
+How many times would you like to roll? : 6
+[3, 5, 4, 3, 1, 2]
+18
 ```
-
 
 ## 5.2
 Write a program that asks the user to enter numbers until they input an empty string to quit.
@@ -431,7 +522,15 @@ first_five_numbers = numbers[:5]
 print(first_five_numbers)
 ```
 ```monospace
-
+Enter a number: 5
+Enter a number: 40
+Enter a number: 56
+Enter a number: 39
+Enter a number: 28
+Enter a number: 1
+Enter a number: 888
+Enter a number: 
+[888, 56, 40, 39, 28]
 ```
 
 ## 5.3
@@ -444,7 +543,7 @@ On the other hand, 21 is not a prime number as it is divisible by 3 and 7.
 user_num = int(input("Enter a number: "))
 divided_by = []
 
-if user_num <= 1 :
+if user_num <= 1 or user_num == 4:
     print("Your number is not a prime number.")
 
 elif user_num in { 2,3,5 }:
@@ -462,7 +561,20 @@ elif user_num > 5:
         print("Your number is not a prime number.")
 ```
 ```monospace
+Enter a number: 0
+Your number is not a prime number.
 
+Enter a number: 1
+Your number is not a prime number.
+
+Enter a number: 2
+Your number is a prime number.
+
+Enter a number: 4
+Your number is not a prime number.
+
+Enter a number: 21
+Your number is not a prime number.
 ```
 
 ## 5.4
@@ -481,7 +593,16 @@ for city in cities:
     print(city)
 ```
 ```monospace
-
+Enter a city: city1
+Enter a city: city2
+Enter a city: city3
+Enter a city: city4
+Enter a city: city5
+city1
+city2
+city3
+city4
+city5
 ```
 
 # 6. Functions
