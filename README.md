@@ -1,5 +1,3 @@
-import math
-import random
 # 2.Variables and interactive programs
 ## 2.1
 Write a program that asks your name and then greets you by your name: Examples:
@@ -9,6 +7,10 @@ If you enter Ahmed as your name, the program will greet you with Hello, Ahmed!.
 ```python
 name = input("Enter your name: ")
 print(f"Hello {name}")
+```
+```monospace
+Enter your name: luoying
+Hello luoying
 ```
 
 ## 2.2
@@ -20,6 +22,10 @@ import math
 radius = float(input("Enter your radius: "))
 area = math.pi * radius**2
 print(f"The area is {area:.2f}")
+```
+```monospace
+Enter your radius: 2.3
+The area is 16.62
 ```
 
 ## 2.3
@@ -34,6 +40,11 @@ perimeter = (length + width) * 2
 area = length * width
 print(f"The perimeter is {perimeter:.2f},The area is {area:.2f}")
 ```
+```monospace
+Enter length: 3
+Enter width: 5
+The perimeter is 16.00,The area is 15.00
+```
 
 ## 2.4
 Write a program that asks the user for three integer numbers.
@@ -47,6 +58,12 @@ sum = num1 + num2 + num3
 product = num1 * num2 * num3
 average = sum / 3
 print(f"The sum is {sum:.2f},The product is {product:.2f},The average is {average:.2f}")
+```
+```monospace
+input number1: 2.2
+input number2: 6
+input number3: 5.8
+The sum is 14.00,The product is 76.56,The average is 4.67
 ```
 
 ## 2.5
@@ -65,6 +82,13 @@ total = lots * 13.3 + pounds * 13.3 * 32 + talents * 13.3 * 32 * 20
 kilograms = total // 1000
 grams = total % 1000
 print(f"The weight in modern units: \n{kilograms:.0f} kilograms and {grams:.2f} grams.")
+```
+```monospace
+input talents: 3
+input pounds: 9
+input lots: 13.5
+The weight in modern units: 
+29 kilograms and 545.95 grams.
 ```
 
 ## 2.6
@@ -87,6 +111,10 @@ nn4 = random.randint(1, 6)
 code2 = nn1 , nn2 , nn3 , nn4
 print(f'code2 is : {code2}')
 ```
+```monospace
+code1 is : (9, 2, 0)
+code2 is : (5, 1, 3, 4)
+```
 
 # 3. Conditional structures (if)
 ## 3.1
@@ -101,9 +129,15 @@ if length >= 42:
 else:
     print("A zander must be 42 centimeters or longer to meet the size limit.\n"
            "Please release the fish back into the lake.")
-
 ```
+```monospace
+The length of a zander in centimeters is: 2
+A zander must be 42 centimeters or longer to meet the size limit.
+Please release the fish back into the lake.
 
+The length of a zander in centimeters is: 42
+You can keep the fish.
+```
 ## 3.2
 Write a program that asks the user to enter the cabin class of a cruise ship and then prints out a written description according to the list below.You must use an if/elif/else structure in your solution.
 LUX: upper-deck cabin with a balcony.
@@ -113,7 +147,7 @@ C: windowless cabin below the car deck.
 If the user enters an invalid cabin class, the program outputs an error message Invalid cabin class.
 
 ```python
-cabin_class = input("Please enter the cabin class of a cruise ship:")
+cabin_class = input("Please enter the cabin class of a cruise ship:").upper()
 if cabin_class == "LUX":
     print("LUX: upper-deck cabin with a balcony.")
 elif cabin_class == "A":
@@ -124,6 +158,16 @@ elif cabin_class == "C":
     print("C: windowless cabin below the car deck.")
 else:
     print('Invalid cabin class.')
+```
+```monospace
+Please enter the cabin class of a cruise ship:a
+A: above the car deck, equipped with a window.
+
+Please enter the cabin class of a cruise ship:lux
+LUX: upper-deck cabin with a balcony.
+
+Please enter the cabin class of a cruise ship:1
+Invalid cabin class.
 ```
 
 ## 3.3
@@ -153,6 +197,9 @@ elif gender == "Female":
 else:
     print("Input error.")
 ```
+```monospace
+
+```
         
 ## 3.4
 Write a program that asks the user to enter a year and notifies the user whether the input year is a leap year.
@@ -165,6 +212,9 @@ if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
     print("It is a leap year.")
 else:
     print("It is not a leap year.")
+```
+```monospace
+
 ```
 
 # 4. While loops (while)
@@ -184,6 +234,9 @@ while i <= 1000:
     print(i)
     i += 3
 ```
+```monospace
+
+```
 
 ## 4.2
 Write a program that converts inches to centimeters until the user inputs a negative value.
@@ -196,6 +249,9 @@ while inches > 0:
     print(f"{inches} inches = {centimeters} centimeters")
     inches = float(input("Enter inches: "))
 print("program ends")
+```
+```monospace
+
 ```
 
 ## 4.3
@@ -218,6 +274,9 @@ while number != "":
 
 print(f"The max_number is {max_number},the min_number is {min_number}")
 ```
+```monospace
+
+```
 
 The second way:
 
@@ -233,7 +292,9 @@ number_max = max(numbers)
 number_min = min(numbers)
 print(number_max, number_min)
 ```
+```monospace
 
+```
 
 ## 4.4
 Write a game where the computer draws a random integer between 1 and 10.
@@ -254,6 +315,9 @@ while True:
     else:
         print("Correct!")
         break
+```
+```monospace
+
 ```
 
 ## 4.5
@@ -279,6 +343,9 @@ while time < 5:
         print("Try Again")
     else:
         print("Access denied")
+```
+```monospace
+
 ```
 
 ## 4.6
@@ -315,6 +382,9 @@ while point_all < point_user:
 pi = 4 * point_circle / point_user
 print(f"The approximation of pi is {pi:.10f}")
 ```
+```monospace
+
+```
     
 # 5. List structures and iterative loops (for)
 ## 5.1
@@ -333,6 +403,9 @@ for i in range(times):
     sum_of_numbers = sum_of_numbers + roll
 print(numbers)
 print(sum_of_numbers)
+
+```
+```monospace
 
 ```
 
@@ -356,6 +429,9 @@ numbers.sort(reverse=True)
 first_five_numbers = numbers[:5]
 
 print(first_five_numbers)
+```
+```monospace
+
 ```
 
 ## 5.3
@@ -385,6 +461,9 @@ elif user_num > 5:
     else:
         print("Your number is not a prime number.")
 ```
+```monospace
+
+```
 
 ## 5.4
 Write a program that asks the user to enter the names of five cities one by on (use a for loop for reading the names) and stores them into a list structure.
@@ -400,6 +479,9 @@ for a in range(5):
 
 for city in cities:
     print(city)
+```
+```monospace
+
 ```
 
 # 6. Functions
@@ -421,7 +503,9 @@ while True:                # while result != 6:
         break
     print(result)
 ```
+```monospace
 
+```
 
 ## 6.2
 Modify the function above so that it gets the number of sides on the dice as a parameter.
@@ -446,6 +530,9 @@ while True:
         break
     print(result)
 ```
+```monospace
+
+```
 
 ## 6.3
 Write a function that gets the quantity of gasoline in American gallons and returns the number converted to litres. Write a main program that asks for a volume in gallons from the user and converts the value to liters.
@@ -465,6 +552,9 @@ while user_gallons >= 0 :
 
 print("Error input.")
 ```
+```monospace
+
+```
 
 ## 6.4
 Write a function that gets a list of integers as a parameter.The function returns the sum of all the numbers in the list.
@@ -482,7 +572,9 @@ numbers = [2,4,6,10]
 sum_numbers = f(numbers)
 print(f"The sum of {numbers} is {sum_numbers}")
 ```
+```monospace
 
+```
 
 ## 6.5
 Write a function that gets a list of integers as a parameter.
@@ -501,6 +593,9 @@ print(list_create)
 
 new_list = n(list_create)
 print(new_list)
+```
+```monospace
+
 ```
 
 ## 6.6
@@ -547,6 +642,9 @@ else:
     print(f"The second pizza is {unit_price2:.2f} euros/square meter.")
     print("They have the same unit price.")
 ```
+```monospace
+
+```
 
 # 7. Tuple, set, and dictionary
 ## 7.1
@@ -575,6 +673,9 @@ while True:
         print("It's a new name.")
 for a in names:
     print(a)
+```
+```monospace
+
 ```
 
 ## 7.3
@@ -688,6 +789,9 @@ while True:
         break
     else:
         print('Error: Invalid input. Please enter 1, 2, or 3.')
+```
+```monospace
+
 ```
 
 
