@@ -625,7 +625,9 @@ while True:                # while result != 6:
     print(result)
 ```
 ```monospace
-
+5
+3
+6
 ```
 
 ## 6.2
@@ -652,7 +654,11 @@ while True:
     print(result)
 ```
 ```monospace
-
+Enter a number: 12
+1
+8
+4
+12
 ```
 
 ## 6.3
@@ -674,7 +680,12 @@ while user_gallons >= 0 :
 print("Error input.")
 ```
 ```monospace
-
+Enter number of gasoline in American gallons : 1
+1.0 gallons = 3.785 litres.
+Enter number of gasoline in American gallons : 0
+0.0 gallons = 0.000 litres.
+Enter number of gasoline in American gallons : -1
+Error input.
 ```
 
 ## 6.4
@@ -694,7 +705,7 @@ sum_numbers = f(numbers)
 print(f"The sum of {numbers} is {sum_numbers}")
 ```
 ```monospace
-
+The sum of [2, 4, 6, 10] is 22
 ```
 
 ## 6.5
@@ -716,7 +727,8 @@ new_list = n(list_create)
 print(new_list)
 ```
 ```monospace
-
+[1, 1, 1, 1, 2, 2, 3, 4, 5, 56, 6, 7, 8, 9]
+[2, 2, 4, 56, 6, 8]
 ```
 
 ## 6.6
@@ -764,7 +776,13 @@ else:
     print("They have the same unit price.")
 ```
 ```monospace
-
+Enter your first diameter(cm): 2
+Enter your first price: 3.3
+Enter your second diameter(cm): 3
+Enter your second price: 4.4
+The first pizza is 10504.23 euros/square meter.
+The second pizza is 6224.73 euros/square meter.
+The second pizza has a lower unit price.
 ```
 
 # 7. Tuple, set, and dictionary
@@ -796,7 +814,18 @@ for a in names:
     print(a)
 ```
 ```monospace
-
+Please enter a name (or press Enter to finish): 123
+It's a new name.
+Please enter a name (or press Enter to finish): aaa
+It's a new name.
+Please enter a name (or press Enter to finish): aaa
+It was entered.
+Please enter a name (or press Enter to finish): ccc
+It's a new name.
+Please enter a name (or press Enter to finish): 
+ccc
+123
+aaa
 ```
 
 ## 7.3
@@ -848,6 +877,55 @@ while True:
         break
     else:
         print('Error enter.')
+```
+```monospace
+1:Enter a new airport.
+2:Fetch the information of an existing airport.
+3:Quit.
+Please enter a number ：1
+Please enter the ICAO code of the airport: aaaa
+Please enter the name of the airport: 123456
+New airport "123456" with ICAO code "AAAA" added.
+1:Enter a new airport.
+2:Fetch the information of an existing airport.
+3:Quit.
+Please enter a number ：aaaa
+Error enter.
+1:Enter a new airport.
+2:Fetch the information of an existing airport.
+3:Quit.
+Please enter a number ：2
+Here is the list of available airports:
+EFHK
+ZBAA
+VHHH
+KLAX
+YSSY
+LFPG
+CYYZ
+AAAA
+Please enter the ICAO code: aaaa
+The name of the airport with ICAO code "AAAA" is: 123456
+1:Enter a new airport.
+2:Fetch the information of an existing airport.
+3:Quit.
+Please enter a number ：2
+Here is the list of available airports:
+EFHK
+ZBAA
+VHHH
+KLAX
+YSSY
+LFPG
+CYYZ
+AAAA
+Please enter the ICAO code: bbbb
+Airport not found.
+1:Enter a new airport.
+2:Fetch the information of an existing airport.
+3:Quit.
+Please enter a number ：3
+Quit
 ```
 ```python
 chooses = {
@@ -913,6 +991,49 @@ while True:
 ```
 ```monospace
 
+1: Enter a new airport.
+2: Fetch the information of an existing airport.
+3: Quit.
+Please enter a number: 1
+Please enter the ICAO code of the airport: aaaa
+Please enter the name of the airport: 123456
+New airport "123456" with ICAO code "AAAA" added.
+
+1: Enter a new airport.
+2: Fetch the information of an existing airport.
+3: Quit.
+Please enter a number: aaaa
+Error: Invalid input. Please enter 1, 2, or 3.
+
+1: Enter a new airport.
+2: Fetch the information of an existing airport.
+3: Quit.
+Please enter a number: 2
+
+Here is the list of available airports:
+EFHK  ZBAA  VHHH  KLAX  YSSY  
+LFPG  CYYZ  AAAA  
+
+Please enter the ICAO code: aaaa
+The name of the airport with ICAO code "AAAA" is: 123456
+
+1: Enter a new airport.
+2: Fetch the information of an existing airport.
+3: Quit.
+Please enter a number: 2
+
+Here is the list of available airports:
+EFHK  ZBAA  VHHH  KLAX  YSSY  
+LFPG  CYYZ  AAAA  
+
+Please enter the ICAO code: bbbb
+Airport with ICAO code "BBBB" not found.
+
+1: Enter a new airport.
+2: Fetch the information of an existing airport.
+3: Quit.
+Please enter a number: 3
+Quitting the program.
 ```
 
 
