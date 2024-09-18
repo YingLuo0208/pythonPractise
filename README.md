@@ -15,6 +15,8 @@ print(f"Hello {name}")
 Write a program that asks the user for the radius of a circle and the prints out the area of the circle.
 
 ```python
+import math
+
 radius = float(input("Enter your radius: "))
 area = math.pi * radius**2
 print(f"The area is {area:.2f}")
@@ -71,6 +73,8 @@ a 3-digit code where each number is between 0 and 9.
 a 4-digit code where each number is between 1 and 6.
 
 ```python
+import random
+
 n1 = random.randint(0, 9)
 n2 = random.randint(0, 9)
 n3 = random.randint(0, 9)
@@ -232,6 +236,8 @@ After each guess the program prints out a text: Too high, Too low or Correct.
 Notice that the computer must not change the number between guesses.
 
 ```python
+import random
+
 random_num = random.randint(1, 10)
 while True:
     guess_num = int(input("Guess a number between 1 and 10: "))
@@ -287,6 +293,8 @@ At the end, the program prints out the approximation of pi to the user.
 if it fulfills the inequation x^2+y^2<1.).
 
 ```python
+import random
+
 point_all = 0
 point_circle = 0
 point_user = int(input("How many points do you want? "))
@@ -308,6 +316,8 @@ Write a program that asks the user how many dice to roll.
 The program rolls all the dice once and prints out the sum of the numbers. Use a for loop.
 
 ```python
+import random
+
 times = int(input("How many times would you like to roll? : "))
 sum_of_numbers = 0
 numbers =[]
@@ -392,6 +402,8 @@ Write a function that returns a random dice roll between 1 and 6.The function sh
 Write a main program that rolls the dice until the result is 6.The main program should print out the result of each roll.
 
 ```python
+import random
+
 def roll():
     dice = random.randint(1,6)
     return dice
@@ -411,6 +423,8 @@ With the modified function you can for example roll a 21-sided role-playing dice
 The difference to the last exercise is that the dice rolling in the main program continues until the program gets the maximum number on the dice,which is asked from the user at the beginning.
 
 ```python
+import random
+
 def roll(sides):
     dice = random.randint(1, sides)
     return dice
@@ -490,6 +504,8 @@ The main program asks the user to enter the diameter and price of two pizzas and
 You must use the function you wrote for calculating the unit prices.
 
 ```python
+import math
+
 def calculate_unit_price(diameter,price):
     # Calculate the area of the pizza (in square meters) Diameter is in cm, convert to meters
     pizza_size = (diameter /100 / 2) ** 2 * math.pi
