@@ -1040,10 +1040,71 @@ Quitting the program.
 Write a program that asks the user to enter the ICAO code of an airport. The program fetches and prints out the corresponding airport name and location (town) from the airport database used on this course. The ICAO codes are stored in the ident column of the airport table.
 
 ```python
+import mysql.connector   #导入 MySQL Connector 模块
 
+def connect_to_mariadb_airport():
+    connection= mysql.connector.connect(    #建立数据库连接：mysql.connector.connect()
+        user="luoying",
+        password="mypassword",
+        host="localhost",      # 设置主机地址,localhost，表示本地计算机
+        port=3306,             # 设置数据库端口：3306 是 MySQL 数据库的默认端口。
+        database="airport",    # 选择要连接的数据库名称
+        autocommit = True,     # 自动提交开启
+        charset="utf8mb4",     # 设置字符集：utf8mb4，它支持包括 emoji 在内的多字节 Unicode 字符。
+        collation= "utf8mb4_general_ci"    #设置字符排序规则：utf8mb4 字符集的一种不区分大小写的通用排序规则。
+    )                      # 结束连接设置
+
+    if connection.is_connected():  # 检查连接是否成功
+        print("Connected successfully to MariaDB!")
+
+    return connection          # 将建立的数据库连接对象返回给调用此函数的地方
+
+# icao：机场的 ICAO 代码。connection：数据库连接对象。
+def get_name_location_by_icao(icao,connection):
+
+    # 创建游标对象：创建一个游标对象 cursor。游标用于执行 SQL 查询和获取结果。
+    cursor = connection.cursor()
+
+    # 定义SQL查询字符串：选择 airport 表中的 name 和 municipality 列。%s：占位符，用于在执行查询时动态插入 icao 的值。
+    sql = "SELECT name, municipality FROM airport WHERE ident = %s"
+
+    # 执行SQL查询：调用游标execute()方法。将 icao 作为参数传递给查询，替换%s占位符。可防止SQL注入攻击并确保查询的正确性。
+    cursor.execute(sql, (icao,))
+
+    # 获取单条查询结果：调用fetchone()方法从游标中获取查询的第一行结果。如果没有结果，则result为None。
+    result = cursor.fetchone()
+
+    # 关闭游标：调用游标close()方法，关闭游标对象以释放数据库资源。
+    cursor.close()
+
+    # 如果找到结果，返回该结果；如果没有找到，则返回 None。
+    return result if result else None
+
+icao_input = input("Enter icao code of the airport:").upper()
+
+# 调用之前定义的函数，建立与数据库的连接，并将返回的连接对象赋值给变量conn
+conn = connect_to_mariadb_airport()
+
+# 调用函数,传入用户输入的ICAO代码和数据库连接对象conn。
+# 函数执行后，返回的机场名称和市区信息将赋值给变量airport_city。
+airport_city = get_name_location_by_icao(icao_input,conn)
+
+if airport_city:
+    print(f"Airport name: {airport_city[0]}, Location(Town): {airport_city[1]}.")
+else:
+    print(f"No airport found with icao code {icao_input.upper()}")
+
+ # 关闭与数据库的连接，释放资源。确保在所有数据库操作完成后关闭连接，以避免资源泄漏。
+conn.close()
 ```
 ```monospace
+Enter icao code of the airport:aaaa
+Connected successfully to MariaDB!
+No airport found with icao code AAAA
 
+Enter icao code of the airport:efhk
+Connected successfully to MariaDB!
+Airport name: Helsinki Vantaa Airport, Location(Town): Helsinki.
 ```
 
 ## 8.2
