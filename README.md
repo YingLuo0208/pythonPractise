@@ -1127,10 +1127,77 @@ Airport name: Helsinki Vantaa Airport, Location(Town): Helsinki.
 ## 8.2
 Write a program that asks the user to enter the area code (for example FI) and prints out the airports located in that country ordered by airport type. For example, Finland has 65 small airports, 15 helicopter airports and so on.
 ```python
+import mysql.connector
 
+def connect_to_mariadb_airport():
+    connection= mysql.connector.connect(
+        user="luoying",
+        password="mypassword",
+        host="localhost",
+        port=3306,
+        database="airport",
+        autocommit = True,
+        charset="utf8mb4",
+        collation= "utf8mb4_general_ci"
+    )
+    if connection.is_connected():
+        print("Connected successfully to MariaDB!")
+    return connection
+
+def get_airports_by_iso_country(iso_country,connection):
+
+    # 创建游标对象：创建一个游标对象 cursor。游标用于执行SQL查询和获取结果。
+    cursor = connection.cursor()
+
+    # 从airport表中选择type列
+    # 使用 COUNT(*) 聚合函数来计算每个 type 中机场的数量
+    # 给这个计算结果取了一个别名 airports_count，方便后续查询结果的读取和展示
+    sql = ("SELECT type, COUNT(*) as airports_count "
+           "FROM airport "
+           "WHERE iso_country = %s "
+           "GROUP BY type "    # 按type列对结果分组。同类型的机场会被归为一组，COUNT(*) 将统计每一组内的机场数量。
+           "ORDER BY type")    # 按type列对结果升序排列。确保不同类型的机场按字母顺序或其他自然顺序进行展示。
+
+    cursor.execute(sql, (iso_country,))
+
+    # 来获取SQL查询执行后返回的所有结果。如果没有任何数据返回，则返回一个空列表 []
+    result = cursor.fetchall()
+    cursor.close()
+    return result
+
+# 调用之前定义的函数，建立与数据库的连接，并将返回的连接对象赋值给变量conn
+conn = connect_to_mariadb_airport()
+
+iso_country_input = input("Enter the country code (e.g 'FI' for Finland):")
+
+# 使用传入的 conn 连接对象，执行一条 SQL 查询。
+# 查询条件是由 iso_country_input 来决定的国家代码，比如 iso_country_input 为 'FI'（芬兰），那么查询就会获取芬兰所有机场的数据。
+airport_type = get_airports_by_iso_country(iso_country_input,conn)
+
+if airport_type:
+    # 打印表头，20字符宽度用于机场类型，10字符宽度用于机场数量
+    print(f"\n{'Airport Type':<20} {'Count':<10}")
+    print("-" * 30)  # 表格分隔线
+
+    # 逐行打印每种类型的机场和数量，格式化输出
+    for i in airport_type:
+        print(f"{i[0]:<20} {i[1]:<10}")
+else:
+    print(f"No airports found for the country code: {iso_country_input}")
+
+conn.close()
 ```
 ```monospace
+Connected successfully to MariaDB!
+Enter the country code (e.g 'FI' for Finland):fi
 
+Airport Type         Count     
+------------------------------
+closed               6         
+heliport             15        
+large_airport        1         
+medium_airport       30        
+small_airport        65  
 ```
 ## 8.3
 Write a program that asks the user to enter the ICAO codes of two airports. The program prints out the distance between the two airports in kilometers. The calculation is based on the airport coordinates fetched from the database. Calculate the distance using the geopy library: https://geopy.readthedocs.io/en/stable/. Install the library by selecting View / Tool Windows / Python Packages in your PyCharm IDE, write geopy into the search field and finish the installation.
