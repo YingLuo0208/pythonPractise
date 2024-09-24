@@ -1207,7 +1207,6 @@ from geopy.distance import geodesic
 
 # 建立与MariaDB的连接
 def connect_to_mariadb_airport():
-
     connection = mysql.connector.connect(
         user="luoying",
         password="mypassword",
@@ -1221,8 +1220,6 @@ def connect_to_mariadb_airport():
     if connection.is_connected():
         print("Connected successfully to MariaDB!")
     return connection
-
-
 
 # 接受一个 ICAO 代码和数据库连接作为参数。
 def get_airport_location(icao,conn):
@@ -1259,14 +1256,12 @@ else:
     print("Could not find one or both airports.")
 
 conn.close()
-
 ```
 ```monospace
 Connected successfully to MariaDB!
 Enter the first ICAO code: YUDA
 Enter the second ICAO code: YUPG
 The distance between YUDA and YUPG is 1139.25 kilometers.
-
 ```
 
 
