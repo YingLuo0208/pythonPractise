@@ -1202,9 +1202,70 @@ small_airport        65
 ## 8.3
 Write a program that asks the user to enter the ICAO codes of two airports. The program prints out the distance between the two airports in kilometers. The calculation is based on the airport coordinates fetched from the database. Calculate the distance using the geopy library: https://geopy.readthedocs.io/en/stable/. Install the library by selecting View / Tool Windows / Python Packages in your PyCharm IDE, write geopy into the search field and finish the installation.
 ```python
+import mysql.connector
+from geopy.distance import geodesic
+
+# 建立与MariaDB的连接
+def connect_to_mariadb_airport():
+
+    connection = mysql.connector.connect(
+        user="luoying",
+        password="mypassword",
+        host="localhost",
+        port=3306,
+        database="airport",
+        autocommit=True,
+        charset="utf8mb4",
+        collation="utf8mb4_general_ci"
+    )
+    if connection.is_connected():
+        print("Connected successfully to MariaDB!")
+    return connection
+
+
+
+# 接受一个 ICAO 代码和数据库连接作为参数。
+def get_airport_location(icao,conn):
+    cursor = conn.cursor()
+    spl = ("SELECT latitude_deg, longitude_deg "
+           "FROM airport "
+           "WHERE ident = %s")
+    cursor.execute(spl, (icao,))
+    result = cursor.fetchone()
+    cursor.close()
+    return result
+
+# 接受两个 ICAO 代码和数据库连接作为参数。
+def calculate_distance(icao1, icao2, conn):
+    location1 = get_airport_location(icao1, conn)
+    location2 = get_airport_location(icao2, conn)
+
+    if location1 and location2:
+        airports_distance = geodesic(location1, location2).kilometers
+        return airports_distance
+    else:
+        return None
+
+conn = connect_to_mariadb_airport()
+
+airport_a = input("Enter the first ICAO code: ").upper().strip()
+airport_b = input("Enter the second ICAO code: ").upper().strip()
+
+distance = calculate_distance(airport_a, airport_b, conn)
+
+if distance is not None:
+    print(f"The distance between {airport_a} and {airport_b} is {distance:.2f} kilometers.")
+else:
+    print("Could not find one or both airports.")
+
+conn.close()
 
 ```
 ```monospace
+Connected successfully to MariaDB!
+Enter the first ICAO code: YUDA
+Enter the second ICAO code: YUPG
+The distance between YUDA and YUPG is 1139.25 kilometers.
 
 ```
 
