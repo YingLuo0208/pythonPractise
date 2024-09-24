@@ -790,9 +790,26 @@ The second pizza has a lower unit price.
 Write a program that asks the user for a number of a month and then prints out the corresponding season (spring, summer, autumn, winter).
 Save the seasons as strings into a tuple in your program.
 We can define each season to last three months,December being the first month of winter.
+```python
+season = ("","winter","winter","spring","spring","spring","summer",
+          "summer","summer","autumn","autumn","autumn","winter")
 
+month_input = int(input("Enter a number of a month(1-12):"))
+if 12 >= month_input >= 1:
+    print(season[month_input])
+else:
+    print("Invalid input")
+```
+```monospace
+Enter a number of a month(1-12):20
+Invalid input
 
+Enter a number of a month(1-12):1
+winter
 
+Enter a number of a month(1-12):7
+summer
+```
 
 ## 7.2
 Write a program that asks the user to enter names until he/she enters an empty string.
