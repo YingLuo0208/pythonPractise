@@ -1292,10 +1292,66 @@ Travelled distance : 0(km)
 ## 9.2
 Extend the program by adding an accelerate method into the new class. The method should receive the change of speed (km/h) as a parameter. If the change is negative, the car reduces speed. The method must change the value of the speed property of the object. The speed of the car must stay below the set maximum and cannot be less than zero. Extend the main program so that the speed of the car is first increased by +30 km/h, then +70 km/h and finally +50 km/h. Then print out the current speed of the car. Finally, use the emergency brake by forcing a -200 km/h change on the speed and then print out the final speed. The travelled distance does not have to be updated yet.
 ```python
+class Car:
+    def __init__(self, number, max_speed,speed = 0,distance = 0):
+        self.number = number
+        self.max_speed = max_speed
+        self.speed = speed
+        self.distance = distance
 
+    def accelerate(self, speed_change):
+        self.speed += speed_change
+        if self.speed > self.max_speed:
+            self.speed = self.max_speed
+        elif self.speed < 0:
+            self.speed = 0
+
+    def car_info(self):
+        print(f"Registration number : {self.number}")
+        print(f"Maximum speed : {self.max_speed}(km/h)")
+        print(f"Current speed : {self.speed}(km/h)")
+        print(f"Travelled distance : {self.distance}(km)")
+
+new_car = Car("ABC-123",142)
+new_car.car_info()
+
+new_car.accelerate(30)
+new_car.car_info()
+
+new_car.accelerate(70)
+new_car.car_info()
+
+new_car.accelerate(50)
+new_car.car_info()
+
+new_car.accelerate(-200)
+new_car.car_info()
 ```
 ```monospace
+Registration number : ABC-123
+Maximum speed : 142(km/h)
+Current speed : 0(km/h)
+Travelled distance : 0(km)
 
+Registration number : ABC-123
+Maximum speed : 142(km/h)
+Current speed : 30(km/h)
+Travelled distance : 0(km)
+
+Registration number : ABC-123
+Maximum speed : 142(km/h)
+Current speed : 100(km/h)
+Travelled distance : 0(km)
+
+Registration number : ABC-123
+Maximum speed : 142(km/h)
+Current speed : 142(km/h)
+Travelled distance : 0(km)
+
+Registration number : ABC-123
+Maximum speed : 142(km/h)
+Current speed : 0(km/h)
+Travelled distance : 0(km)
 ```
 ## 9.3
 Again, extend the program by adding a new drive method that receives the number of hours as a parameter. The method increases the travelled distance by how much the car has travelled in constant speed in the given time. Example: The travelled distance of car object is 2000 km. The current speed is 60 km/h. Method call car.drive(1.5) increases the travelled distance to 2090 km.
