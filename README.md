@@ -1356,10 +1356,38 @@ Travelled distance : 0(km)
 ## 9.3
 Again, extend the program by adding a new drive method that receives the number of hours as a parameter. The method increases the travelled distance by how much the car has travelled in constant speed in the given time. Example: The travelled distance of car object is 2000 km. The current speed is 60 km/h. Method call car.drive(1.5) increases the travelled distance to 2090 km.
 ```python
+class Car:
+    def __init__(self, number, max_speed,speed = 0,distance = 0):
+        self.number = number
+        self.max_speed = max_speed
+        self.speed = speed
+        self.distance = distance
 
+    def accelerate(self, speed_change):
+        self.speed += speed_change
+        if self.speed > self.max_speed:
+            self.speed = self.max_speed
+        elif self.speed < 0:
+            self.speed = 0
+
+    def drive(self, time_hours):
+        self.distance += time_hours * self.speed
+
+    def car_info(self):
+        print(f"Registration number : {self.number}")
+        print(f"Maximum speed : {self.max_speed}(km/h)")
+        print(f"Current speed : {self.speed}(km/h)")
+        print(f"Travelled distance : {self.distance}(km)")
+
+new_car = Car("ABC-123",142,60,2000)
+new_car.drive(1.5)
+new_car.car_info()
 ```
 ```monospace
-
+Registration number : ABC-123
+Maximum speed : 142(km/h)
+Current speed : 60(km/h)
+Travelled distance : 2090.0(km)
 ```
 ## 9.4
 Now we will program a car race. The travelled distance of a new car is initialized as zero. At the beginning of the main program, create a list that consists of 10 car objects created using a loop. The maximum speed of each new car is a random value between 100 km/h and 200 km/h. The registration numbers are created as follows: "ABC-1", "ABC-2" and so on. Now the race begins. One per every hour of the race, the following operations are performed:
