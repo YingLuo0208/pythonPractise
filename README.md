@@ -1392,8 +1392,9 @@ Travelled distance : 2090.0(km)
 ## 9.4
 Now we will program a car race. The travelled distance of a new car is initialized as zero. At the beginning of the main program, create a list that consists of 10 car objects created using a loop. The maximum speed of each new car is a random value between 100 km/h and 200 km/h. The registration numbers are created as follows: "ABC-1", "ABC-2" and so on. Now the race begins. One per every hour of the race, the following operations are performed:
 
-  The speed of each car is changed so that the change in speed is a random value between -10 km/h and +15 km/h. This is done using the accerelate method.
-  Each car is made to drive for one hour. This is done with the drive method.
+The speed of each car is changed so that the change in speed is a random value between -10 km/h and +15 km/h. This is done using the accerelate method.
+
+Each car is made to drive for one hour. This is done with the drive method.
   
 The race continues until one of the cars has advanced at least 10,000 kilometers. Finally, the properties of each car are printed out formatted into a clear table.
 ```python
@@ -1496,9 +1497,11 @@ Extend the program again by adding a method fire_alarm that does not receive any
 ## 10.4
 This exercise continues the previous car race exercise from the last exercise set. Write a Race class that has the following properties: name, distance in kilometers and a list of cars participating in the race. The class has an initializer that receives the name, kilometers, and car list as parameters and sets their values to the corresponding properties in the class. The class has the following methods:
 
-  hour_passes, which performs the operations done once per hour in the original exercise: generates a random change of speed for each car and calls their drive method.
-  print_status, which prints out the current information of each car as a clear, formatted table.
-  race_finished, which returns True if any of the cars has reached the finish line, meaning that they have driven the entire distance of the race.
+hour_passes, which performs the operations done once per hour in the original exercise: generates a random change of speed for each car and calls their drive method.
+
+print_status, which prints out the current information of each car as a clear, formatted table.
+
+race_finished, which returns True if any of the cars has reached the finish line, meaning that they have driven the entire distance of the race.
   
 Write a main program that creates an 8000-kilometer race called Grand Demolition Derby. The new race is given a list of ten cars similarly to the earlier exercise. The main program simulates the progressing of the race by calling the hour_passes in a loop, after which it uses the race_finished method to check if the race has finished. The current status is printed out using the print_status method every ten hours and then once more at the end of the race.
 ```python
