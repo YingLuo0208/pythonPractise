@@ -1419,8 +1419,16 @@ class Car:
 
     def car_info(self):
         # 设置高亮颜色
+        # if self.distance >= 10000:
+        #     highlight = "\033[93m"  # 黄色高亮
+        #     reset = "\033[0m"  # 重置颜色
+        # else:
+        #     highlight = ""  # 没有高亮
+        #     reset = ""  # 无需重置
+        # 条件表达式 <值1> if <条件> else <值2>
         highlight = "\033[93m" if self.distance >= 10000 else ""
         reset = "\033[0m"  # 重置颜色
+
         print(
             f" {highlight}{self.number:<15}{self.max_speed:<20}"
             f"{self.speed:<25}{self.distance:<20}{reset}")
