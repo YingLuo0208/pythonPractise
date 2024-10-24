@@ -1463,7 +1463,8 @@ Registration   Max Speed (km/h)    Current Speed (km/h)     Distance (km)
  ABC-4          134                 123                      5492                
  ABC-5          179                 171                      8479                
  ABC-6          122                 122                      7113                
- ABC-7          159                 158                      10001               
+ ABC-7          159                 158                      10001
+<span style="color: yellow;">This text is yellow.</span>             
  ABC-8          163                 163                      7534                
  ABC-9          160                 160                      9447                
  ABC-10         188                 183                      5775   
