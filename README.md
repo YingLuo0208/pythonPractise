@@ -1397,16 +1397,88 @@ Now we will program a car race. The travelled distance of a new car is initializ
   
 The race continues until one of the cars has advanced at least 10,000 kilometers. Finally, the properties of each car are printed out formatted into a clear table.
 ```python
+import random
+
+class Car:
+    def __init__(self, number, max_speed,speed = 0,distance = 0):
+        self.number = number
+        self.max_speed = max_speed
+        self.speed = speed
+        self.distance = distance
+
+    def accelerate(self, speed_change):
+        self.speed += speed_change
+        if self.speed > self.max_speed:
+            self.speed = self.max_speed
+        elif self.speed < 0:
+            self.speed = 0
+
+    def drive(self, time_hours):
+        self.distance += time_hours * self.speed
+
+    def car_info(self):
+        # 设置高亮颜色
+        highlight = "\033[93m" if self.distance >= 10000 else ""
+        reset = "\033[0m"  # 重置颜色
+        print(
+            f" {highlight}{self.number:<15}{self.max_speed:<20}"
+            f"{self.speed:<25}{self.distance:<20}{reset}")
+
+
+def car_race():
+    cars = []
+    for i in range(1,11):
+        car_name = f"ABC-{i}"
+        new_car = Car(car_name, random.randint(100,200))
+        cars.append(new_car)
+
+    race = True
+    hours = 0
+    while race:
+        hours += 1
+
+        for car in cars:
+            car.accelerate(speed_change = random.randint(-10,15))
+            car.drive(1)
+
+            if car.distance >= 10000:
+                race = False
+                break
+
+    print(f"Race finished at hour: {hours}h ! Final standings:")
+    print(f"{'Registration':<14} {'Max Speed (km/h)':<19} {'Current Speed (km/h)':<24} {'Distance (km)':<20}")
+    print("-" * 75)
+    for car in cars:
+        car.car_info()
+
+car_race()
+```
+```monospace
+Race finished at hour: 82h ! Final standings:
+Registration   Max Speed (km/h)    Current Speed (km/h)     Distance (km)       
+---------------------------------------------------------------------------
+ ABC-1          174                 163                      7102                
+ ABC-2          191                 162                      7029                
+ ABC-3          144                 144                      8369                
+ ABC-4          134                 123                      5492                
+ ABC-5          179                 171                      8479                
+ ABC-6          122                 122                      7113                
+ ABC-7          159                 158                      10001               
+ ABC-8          163                 163                      7534                
+ ABC-9          160                 160                      9447                
+ ABC-10         188                 183                      5775   
+```
+
+
+
+
+
+```python
 
 ```
 ```monospace
 
 ```
-
-
-
-
-
 
 
 
