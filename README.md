@@ -1707,9 +1707,123 @@ race_finished, which returns True if any of the cars has reached the finish line
   
 Write a main program that creates an 8000-kilometer race called Grand Demolition Derby. The new race is given a list of ten cars similarly to the earlier exercise. The main program simulates the progressing of the race by calling the hour_passes in a loop, after which it uses the race_finished method to check if the race has finished. The current status is printed out using the print_status method every ten hours and then once more at the end of the race.
 ```python
+import random
 
+class Car:
+    def __init__(self, number, max_speed, speed=0, distance=0):
+        self.number = number
+        self.max_speed = max_speed
+        self.speed = speed
+        self.distance = distance
+
+    def accelerate(self, speed_change):
+        self.speed += speed_change
+        if self.speed > self.max_speed:
+            self.speed = self.max_speed
+        elif self.speed < 0:
+            self.speed = 0
+
+    def drive(self, time_hours):
+        self.distance += time_hours * self.speed
+
+    def car_info(self):
+        highlight = "\033[93m" if self.distance >= 8000 else ""
+        reset = "\033[0m"  # Reset color
+        print(
+            f"{highlight}{self.number:<15}{self.max_speed:<20}"
+            f"{self.speed:<25}{self.distance:<20}{reset}"
+        )
+
+class Race:
+    def __init__(self, name, distance, car_list):
+        self.name = name
+        self.distance = distance
+        self.cars = car_list
+
+    def hour_passes(self):
+        for car in self.cars:
+            car.accelerate(speed_change=random.randint(-10, 15))
+            car.drive(1)
+
+    def print_status(self, hour):
+        print(f"\nStatus after {hour} hour(s):")
+        print(f"{'Registration':<14} {'Max Speed (km/h)':<19} {'Current Speed (km/h)':<24} {'Distance (km)':<20}")
+        print("-" * 75)
+        for car in self.cars:
+            car.car_info()
+
+    def race_finished(self):
+        return any(car.distance >= self.distance for car in self.cars)
+
+
+# Create a list of cars
+cars = []
+for i in range(1, 11):
+    car_name = f"ABC-{i}"
+    new_car = Car(car_name, random.randint(100, 200))
+    cars.append(new_car)
+
+# Create a race
+race = Race("Grand Demolition Derby", 8000, cars)
+
+# Simulate the race
+hours = 0
+while not race.race_finished():
+    hours += 1
+    race.hour_passes()
+
+    if hours % 10 == 0:  # Print status every 10 hours
+        race.print_status(hours)
+
+# Final status print after the race finishes
+race.print_status(hours)
+print(f"\nRace finished after {hours} hours!")
 ```
 ```monospace
+Status after 10 hour(s):
+Registration   Max Speed (km/h)    Current Speed (km/h)     Distance (km)       
+---------------------------------------------------------------------------
+ABC-1          176                 60                       367                 
+ABC-2          173                 30                       130                 
+ABC-3          182                 55                       333                 
+ABC-4          151                 9                        56                  
+ABC-5          111                 20                       194                 
+ABC-6          157                 6                        12                  
+ABC-7          178                 32                       140                 
+ABC-8          169                 31                       145                 
+ABC-9          113                 40                       248                 
+ABC-10         115                 13                       130                 
+...
+
+Status after 60 hour(s):
+Registration   Max Speed (km/h)    Current Speed (km/h)     Distance (km)       
+---------------------------------------------------------------------------
+ABC-1          176                 162                      5651                
+ABC-2          173                 145                      5811                
+ABC-3          182                 172                      7635                
+ABC-4          151                 102                      3104                
+ABC-5          111                 111                      2649                
+ABC-6          157                 126                      2129                
+ABC-7          178                 178                      6304                
+ABC-8          169                 50                       2177                
+ABC-9          113                 92                       4326                
+ABC-10         115                 47                       2152                
+
+Status after 63 hour(s):
+Registration   Max Speed (km/h)    Current Speed (km/h)     Distance (km)       
+---------------------------------------------------------------------------
+ABC-1          176                 150                      6107                
+ABC-2          173                 147                      6235                
+ABC-3          182                 182                      8171                
+ABC-4          151                 105                      3429                
+ABC-5          111                 108                      2979                
+ABC-6          157                 157                      2561                
+ABC-7          178                 164                      6816                
+ABC-8          169                 26                       2281                
+ABC-9          113                 71                       4555                
+ABC-10         115                 59                       2320                
+
+Race finished after 63 hours!
 
 ```
 # 11. Inheritance
