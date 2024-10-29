@@ -1481,10 +1481,53 @@ Registration   Max Speed (km/h)    Current Speed (km/h)     Distance (km)
 ## 10.1
 Write an Elevator class that receives the numbers of the bottom and top floors as initializer parameters. The elevator has methods go_to_floor, floor_up and floor_down. A new elevator is always at the bottom floor. If you make elevator h for example the method call h.go_to_floor(5), the method calls either the floor_up or floor_down methods as many times as it needs to get to the fifth floor. The methods run the elevator one floor up or down and tell what floor the elevator is after each move. Test the class by creating an elevator in the main program, tell it to move to a floor of your choice and then back to the bottom floor.
 ```python
+class Elevator:
+    def __init__(self, bottom, top):
+        self.bottom = bottom
+        self.top = top
+        self.current_floor = bottom
 
+    def go_to_floor(self, floor):
+        print(f"Elevator is now on floor {self.current_floor}")
+        if floor < self.bottom or floor > self.top:
+            print("Invalid floor.")
+            return
+
+        while self.current_floor < floor:  # Move up if below target floor
+            self.current_floor += 1
+            print(f"Elevator is now on floor {self.current_floor}")
+
+        while self.current_floor > floor:  # Move down if above target floor
+            self.current_floor -= 1
+            print(f"Elevator is now on floor {self.current_floor}")
+
+        print(f"Already at the {floor} floor.")
+
+        if self.current_floor == self.bottom:
+            print("It is the bottom floor.")
+        if self.current_floor == self.top:
+            print("It is the top floor.")
+
+
+
+elevator = Elevator(1, 7)
+elevator.go_to_floor(5)
+elevator.go_to_floor(1)
 ```
 ```monospace
-
+Elevator is now on floor 1
+Elevator is now on floor 2
+Elevator is now on floor 3
+Elevator is now on floor 4
+Elevator is now on floor 5
+Already at the 5 floor.
+Elevator is now on floor 5
+Elevator is now on floor 4
+Elevator is now on floor 3
+Elevator is now on floor 2
+Elevator is now on floor 1
+Already at the 1 floor.
+It is the bottom floor.
 ```
 ## 10.2
 Extend the previous program by creating a Building class. The initializer parameters for the class are the numbers of the bottom and top floors and the number of elevators in the building. When a building is created, the building creates the required number of elevators. The list of elevators is stored as a property of the building. Write a method called run_elevator that accepts the number of the elevator and the destination floor as its parameters. In the main program, write the statements for creating a new building and running the elevators of the building.
