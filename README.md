@@ -1596,10 +1596,105 @@ Invalid floor.
 ## 10.3
 Extend the program again by adding a method fire_alarm that does not receive any parameters and moves all elevators to the bottom floor. Continue the main program by causing a fire alarm in your building.
 ```python
+class Elevator:
+    def __init__(self, bottom, top):
+        self.bottom = bottom
+        self.top = top
+        self.current_floor = bottom
 
+    def go_to_floor(self, floor):
+
+        if floor < self.bottom or floor > self.top:
+            print("Invalid floor.")
+            return
+
+        print(f"Elevator is now on floor {self.current_floor}")
+
+        while self.current_floor < floor:  # Move up if below target floor
+            self.current_floor += 1
+            print(f"Elevator is now on floor {self.current_floor}")
+
+        while self.current_floor > floor:  # Move down if above target floor
+            self.current_floor -= 1
+            print(f"Elevator is now on floor {self.current_floor}")
+
+        print(f"Already at the {floor} floor.")
+
+        if self.current_floor == self.bottom:
+            print("It is the bottom floor.")
+        if self.current_floor == self.top:
+            print("It is the top floor.")
+
+class Building:
+    def __init__(self, bottom,top,numbers):
+        self.bottom = bottom
+        self.top = top
+        # 创建指定数量的电梯并将它们存储在列表中,_ in Loop循环中未使用的一次性变量
+        self.elevators = [Elevator(bottom, top) for _ in range(numbers)]
+
+    def run_elevator(self, elevator_num, destination_floor):
+        if 1 <= elevator_num <= len(self.elevators):
+            print(f"\nRunning elevator {elevator_num} to floor {destination_floor}:")
+            self.elevators[elevator_num-1].go_to_floor(destination_floor)
+
+        else:
+            print("Invalid elevator number.")
+
+    def fire_alarm(self):
+        print("\nFire alarm! Moving all elevators to the bottom floor.")
+        for i in range(len(self.elevators)):
+            print(f"\nMoving elevator {i + 1} to the bottom floor:")
+            self.elevators[i].go_to_floor(self.bottom)
+
+
+building = Building(1, 7, 3)
+building.run_elevator(1, 3)
+building.run_elevator(2, 4)
+building.run_elevator(3, 2)
+
+building.fire_alarm()
 ```
 ```monospace
+Running elevator 1 to floor 3:
+Elevator is now on floor 1
+Elevator is now on floor 2
+Elevator is now on floor 3
+Already at the 3 floor.
 
+Running elevator 2 to floor 4:
+Elevator is now on floor 1
+Elevator is now on floor 2
+Elevator is now on floor 3
+Elevator is now on floor 4
+Already at the 4 floor.
+
+Running elevator 3 to floor 2:
+Elevator is now on floor 1
+Elevator is now on floor 2
+Already at the 2 floor.
+
+Fire alarm! Moving all elevators to the bottom floor.
+
+Moving elevator 1 to the bottom floor:
+Elevator is now on floor 3
+Elevator is now on floor 2
+Elevator is now on floor 1
+Already at the 1 floor.
+It is the bottom floor.
+
+Moving elevator 2 to the bottom floor:
+Elevator is now on floor 4
+Elevator is now on floor 3
+Elevator is now on floor 2
+Elevator is now on floor 1
+Already at the 1 floor.
+It is the bottom floor.
+
+Moving elevator 3 to the bottom floor:
+Elevator is now on floor 2
+Elevator is now on floor 1
+Already at the 1 floor.
+It is the bottom floor.
 ```
 ## 10.4
 This exercise continues the previous car race exercise from the last exercise set. Write a Race class that has the following properties: name, distance in kilometers and a list of cars participating in the race. The class has an initializer that receives the name, kilometers, and car list as parameters and sets their values to the corresponding properties in the class. The class has the following methods:
