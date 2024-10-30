@@ -1,0 +1,48 @@
+class Person:
+    def __init__(self, name, age, gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+
+    def introduce(self):
+        return f"I am {self.name}, {self.age} years old, {self.gender}"
+
+
+class Member(Person):
+    num = 0
+
+    def __init__(self, name, age, gender):
+        Member.num += 1
+        self.membership = Member.num
+        Person.__init__(self, name, age, gender)  # 调用 Person 的初始化方法
+
+    def introduce(self):
+        base_info = super().introduce()
+        return f"{base_info}, with membership ID: {self.membership}"
+
+
+class Author(Person):
+    def __init__(self, name, age, gender, books_written):
+        self.books_written = books_written
+        super().__init__(name, age, gender)  # 调用 Person 的初始化方法
+
+    def list_books(self):
+        return f"Books written: {','.join(self.books_written)}"
+
+
+class AuthorMember(Member, Author):
+    def __init__(self, name, age, gender, books_written):
+        Member.__init__(self, name, age, gender)  # 初始化 Member 部分
+        Author.__init__(self, name, age, gender, books_written)  # 初始化 Author 部分
+
+    def introduce(self):
+        return f"I am {self.name},{self.age}years old,{self.gender},with teacher ID : {self.membership}.Books written: {self.books_written}"
+
+
+representings = [AuthorMember("Alice", "18", "Female", "Here is the book's introduction."),
+                 AuthorMember("Tom", "20", "Male", " Here is the book's introduction."),
+                 AuthorMember("Dave", "19", "Male", " Here is the book's introduction.")
+                 ]
+
+for representing in representings:
+    print(representing.introduce())
