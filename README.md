@@ -1832,18 +1832,139 @@ Race finished after 63 hours!
 ## 11.1
 Implement the following class hierarchy using Python: A publication can be either a book or a magazine. Each publication has a name. Each book also has an author and a page count, whereas each magazine has a chief editor. Also write the required initializers to both classes. Create a print_information method to both subclasses for printing out all information of the publication in question. In the main program, create publications Donald Duck (chief editor Aki Hyyppä) and Compartment No. 6 (author Rosa Liksom, 192 pages). Print out all information of both publications using the methods you implemented.
 ```python
+# Base class Publication
+class Publication:
+    def __init__(self, name):
+        self.name = name
 
+    def print_information(self):
+        print(f"Publication Name: {self.name}")
+
+# Subclass Magazine
+class Magazine(Publication):
+    def __init__(self, name, chief_editor):
+        super().__init__(name)
+        self.chief_editor = chief_editor
+
+    def print_information(self):
+        super().print_information()
+        print(f"Chief Editor: {self.chief_editor}")
+
+# Subclass Book
+class Book(Publication):
+    def __init__(self, name, author, pages):
+        super().__init__(name)
+        self.author = author
+        self.pages = pages
+
+    def print_information(self):
+        super().print_information()
+        print(f"Author: {self.author}")
+        print(f"Page Count: {self.pages}")
+
+# Main program
+# Creating publications
+magazine = Magazine("Donald Duck", "Aki Hyyppä")
+book = Book("Compartment No. 6", "Rosa Liksom", 192)
+
+# Printing information of each publication
+print("Magazine Information:")
+magazine.print_information()
+print("\nBook Information:")
+book.print_information()
 ```
 ```monospace
+Magazine Information:
+Publication Name: Donald Duck
+Chief Editor: Aki Hyyppä
 
+Book Information:
+Publication Name: Compartment No. 6
+Author: Rosa Liksom
+Page Count: 192
 ```
 ## 11.2
 Extend the previosly written Car class by adding two subclasses: ElectricCar and GasolineCar. Electric cars have the capacity of the battery in kilowatt-hours as their property. Gasoline cars have the volume of the tank in liters as their property. Write initializers for the subclasses. For example, the initializer of electric cars receives the registration number, maximum speed and battery capacity as its parameter. It calls the initializer of the base class to set the first two properties and then sets its capacity. Write a main program where you create one electric car (ABC-15, 180 km/h, 52.5 kWh) and one gasoline car (ACD-123, 165 km/h, 32.3 l). Select speeds for both cars, make them drive for three hours and print out the values of their kilometer counters.
 ```python
+# Base Car class
+class Car:
+    def __init__(self, number, max_speed):
+        self.number = number
+        self.max_speed = max_speed
+        self.current_speed = 0
+        self.kilometer_counter = 0
 
+    def set_speed(self, speed):
+        # Sets the speed without exceeding max_speed
+        self.current_speed = min(speed, self.max_speed)
+
+    def drive(self, hours):
+        # Calculates distance traveled and updates kilometer counter
+        distance = self.current_speed * hours
+        self.kilometer_counter += distance
+
+    def print_information(self):
+        # Prints the basic information of the car
+        print(f"Registration Number: {self.number}")
+        print(f"Max Speed: {self.max_speed} km/h")
+        print(f"Current Speed: {self.current_speed} km/h")
+        # Print kilometer counter in yellow
+        print(f"Kilometer Counter: \033[33m{self.kilometer_counter} km\033[0m")
+
+# Subclass for ElectricCar
+class ElectricCar(Car):
+    def __init__(self, number, max_speed, battery):
+        super().__init__(number, max_speed)
+        self.battery = battery  # in kilowatt-hours
+
+    def print_information(self):
+        super().print_information()  # Print basic car information
+        print(f"Battery Capacity: {self.battery} kWh")
+
+# Subclass for GasolineCar
+class GasolineCar(Car):
+    def __init__(self, number, max_speed, volume):
+        super().__init__(number, max_speed)
+        self.volume = volume  # in liters
+
+    def print_information(self):
+        super().print_information()  # Print basic car information
+        print(f"Tank Volume: {self.volume} liters")
+
+# Main program
+# Create an electric car and a gasoline car
+electric_car = ElectricCar("ABC-15", 180, 52.5)
+gasoline_car = GasolineCar("ACD-123", 165, 32.3)
+
+# Set speeds for both cars
+electric_car.set_speed(200)
+gasoline_car.set_speed(150)
+
+# Drive each car for 3 hours
+electric_car.drive(3)
+gasoline_car.drive(3)
+
+# Print out information and kilometer counters for both cars
+print("\nElectric Car Information:")
+electric_car.print_information()
+
+print("\nGasoline Car Information:")
+gasoline_car.print_information()
 ```
 ```monospace
+Electric Car Information:
+Registration Number: ABC-15
+Max Speed: 180 km/h
+Current Speed: 180 km/h
+Kilometer Counter: 540 km
+Battery Capacity: 52.5 kWh
 
+Gasoline Car Information:
+Registration Number: ACD-123
+Max Speed: 165 km/h
+Current Speed: 150 km/h
+Kilometer Counter: 450 km
+Tank Volume: 32.3 liters
 ```
 # 12. Using external interfaces
 ## 12.1
