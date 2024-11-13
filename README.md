@@ -1970,10 +1970,29 @@ Tank Volume: 32.3 liters
 ## 12.1
 Write a program that fetches and prints out a random Chuck Norris joke for the user. Use the API presented here: https://api.chucknorris.io/. The user should only be shown the joke text.
 ```python
+def fetch_joke():
+    # 定义 API URL
+    url = "https://api.chucknorris.io/jokes/random"
 
+    # requests.get() 方法向 url 发出一个 HTTP GET 请求，获取数据,请求最大等待时间为 5 秒
+    response = requests.get(url, timeout=5)
+
+    if response.status_code == 200:  # 通过 response.status_code == 200 来确认请求是否成功。
+        # response.json()方法将返回的JSON数据解析为Python字典，存储在 joke_data 变量中
+        joke_data = response.json()
+        # value：笑话的文本内容
+        joke_text = joke_data.get("value", "Joke not found")
+    else:  # 如果请求没有返回 200 状态码（比如 404 或 500 错误），就进入 else 分支
+        # 指出请求失败，并显示 HTTP 状态码（如 404 或 500）
+        joke_text = f"Failed to fetch joke: {response.status_code}"
+
+    return joke_text   # 返回存储笑话文本或错误消息的 joke_text 变量
+
+joke = fetch_joke()
+print(joke)
 ```
 ```monospace
-
+Chuck Norris doesn't eat limes. He eats limestone.
 ```
 ## 12.2
 Familiarize yourself with the OpenWeather weather API at: https://openweathermap.org/api. Your task is to write a program that asks the user for the name of a municipality and then prints out the corresponding weather condition description text and temperature in Celsius degrees. Take a good look at the API documentation. You must register for the service to receive the API key required for making API requests. Furthermore, find out how you can convert Kelvin degrees into Celsius.
