@@ -2098,10 +2098,86 @@ http://127.0.0.1:5000/prime_number/31
 ## 13.2
 Implement a backend service that gets the ICAO code of an airport and then returns the name and location of the airport in JSON format. The information is fetched from the airport database used on this course. For example, the GET request for EFHK would be: http://127.0.0.1:5000/airport/EFHK. The response must be in the format of: {"ICAO":"EFHK", "Name":"Helsinki-Vantaa Airport", "Location":"Helsinki"}.
 ```python
-zz
+# jsonify:用于将 Python 字典（或其他 JSON 可序列化数据结构）
+# 转换为 JSON 格式，这是用于 Web 通信的标准数据格式。
+from flask import Flask, jsonify
+import mysql.connector   #导入 MySQL Connector 模块
+
+# 创建 Flask 应用程序的实例,该app对象将管理所有路由并处理对不同端点的请求。
+app = Flask(__name__)
+
+def connect_to_mariadb_airport():
+    # 建立数据库连接：mysql.connector.connect()
+    connection= mysql.connector.connect(
+        user="luoying",
+        password="mypassword",
+        host="localhost",      # 设置主机地址,localhost，表示本地计算机
+        port=3306,             # 设置数据库端口：3306 是 MySQL 数据库的默认端口。
+        database="airport",    # 选择要连接的数据库名称
+        autocommit = True,     # 自动提交开启
+        charset="utf8mb4",     # 设置字符集：utf8mb4，它支持包括 emoji 在内的多字节 Unicode 字符。
+        collation= "utf8mb4_general_ci"    #设置字符排序规则：utf8mb4 字符集的一种不区分大小写的通用排序规则。
+    )                      # 结束连接设置
+
+    return connection          # 将建立的数据库连接对象返回给调用此函数的地方
+
+# icao：机场的 ICAO 代码。connection：数据库连接对象。
+def get_name_location_by_icao(icao,connection):
+
+    # 创建游标对象：创建一个游标对象 cursor。游标用于执行 SQL 查询和获取结果。
+    cursor = connection.cursor()
+
+    # 定义SQL查询字符串：选择 airport 表中的 name 和 municipality 列。%s：占位符，用于在执行查询时动态插入 icao 的值。
+    sql = "SELECT name, municipality FROM airport WHERE ident = %s"
+
+    # 执行SQL查询：调用游标execute()方法。将 icao 作为参数传递给查询，替换%s占位符。可防止SQL注入攻击并确保查询的正确性。
+    cursor.execute(sql, (icao,))
+
+    # 获取单条查询结果：调用fetchone()方法从游标中获取查询的第一行结果。如果没有结果，则result为None。
+    result = cursor.fetchone()
+
+    # 关闭游标：调用游标close()方法，关闭游标对象以释放数据库资源。
+    cursor.close()
+
+    # 如果找到结果，返回该结果；如果没有找到，则返回 None。
+    return result if result else None
+
+
+# Route to check if a number is prime
+# @app.route允许为应用程序中的特定功能定义路由（URL 路径）
+# airport:基本路径 <icao>:URL的动态段，充当整数值的占位符。
+# methods=['GET']指定该路由仅响应GET 请求
+@app.route('/airport/<icao>', methods=['GET'])
+
+def airport_info(icao):
+    # 调用之前定义的函数，建立与数据库的连接，并将返回的连接对象赋值给变量conn
+    conn = connect_to_mariadb_airport()
+
+    # 调用函数,传入用户输入的ICAO代码和数据库连接对象conn。
+    # 函数执行后，返回的机场名称和市区信息将赋值给变量airport_city。
+    airport_city = get_name_location_by_icao(icao, conn)
+
+    # 关闭与数据库的连接，释放资源。确保在所有数据库操作完成后关闭连接，以避免资源泄漏。
+    conn.close()
+
+    # 如果找到结果，将机场名称和位置以 JSON 格式返回；否则，返回未找到的信息。
+    if airport_city:
+        return jsonify({"ICAO": icao,"Name": airport_city[0], "Location": airport_city[1]})
+    else:
+        return jsonify({"Error": f"No airport found with ICAO code <{icao.upper()}>"}), 404
+
+# Run the app
+# app.run():启动 Flask 开发服务器。开始侦听默认本地地址
+# （通常为http://127.0.0.1:5000 ）上的传入请求。
+# 可以通过提供其他参数来自定义主机和端口，例如host='0.0.0.0'或port=8080
+app.run()
 ```
 ```monospace
+http://127.0.0.1:5000/airport/EFHK
+{"ICAO":"EFHK","Location":"Helsinki","Name":"Helsinki Vantaa Airport"}
 
+http://127.0.0.1:5000/airport/EFH
+{"Error":"No airport found with ICAO code <EFH>"}
 ```
 
 
