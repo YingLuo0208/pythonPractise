@@ -1997,10 +1997,57 @@ Chuck Norris doesn't eat limes. He eats limestone.
 ## 12.2
 Familiarize yourself with the OpenWeather weather API at: https://openweathermap.org/api. Your task is to write a program that asks the user for the name of a municipality and then prints out the corresponding weather condition description text and temperature in Celsius degrees. Take a good look at the API documentation. You must register for the service to receive the API key required for making API requests. Furthermore, find out how you can convert Kelvin degrees into Celsius.
 ```python
+import requests
+import datetime
 
+def get_weather_info():
+    # 获取 API 密钥
+    api_key = "13f333a6337ccb207b8c17d91f29f2e1"
+
+    # .strip(): 去除用户输入内容的首尾空格。
+    city_name = input("Enter the name of the city: ").strip()
+    country_code = input("Enter the country code (optional): ").strip()
+
+    # 构建 API 请求 URL
+    # data/2.5/weather 是 OpenWeather 的路径部分，用于查询天气数据
+    # q 是 API 查询参数之一，用来指定查询的城市和国家代码
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name},{country_code}&appid={api_key}"
+
+    # 发送请求
+    response = requests.get(url, timeout=5)
+
+    # 处理响应
+    if response.status_code == 200:
+        # 将 API 返回的 JSON 数据转化为 Python 数据结构,字典
+        data = response.json()
+        # 访问 weather 列表中第一个字典元素的 description 键，提取详细的天气描述。
+        # weather 对应的是一个列表（数组）。这个列表中的每个元素通常是一个字典，包含具体的天气状况数据。
+        # weather[0] 是列表中的第一个字典，这个字典包含了该城市的天气主要信息。
+        # description 是 weather[0] 字典中的一个键，它提供了天气状况的详细描述
+        weather_description = data['weather'][0]['description']
+        # data 字典中的 main 是一个键，包含了关于该城市天气的主要信息。
+        # main 的值也是一个字典，包含了与温度、湿度等相关的数据
+        # 在 main 字典中，temp 是一个键，它表示该城市当前的温度
+        temperature_kelvin = data['main']['temp']
+        temperature_celsius = temperature_kelvin - 273.15  # 转换为摄氏温度
+        dt = data['dt']  # 获取Unix 时间戳
+        current_dt = datetime.datetime.fromtimestamp(dt)  # 转化为正常时间
+
+        # 显示结果
+        print(f"Current time: {current_dt}")
+        print(f"Weather: {weather_description}")
+        print(f"Temperature in Celsius: {temperature_celsius:.1f}°C")
+    else:
+        print("Failed to retrieve weather data. Please check the city name and API key.")
+
+get_weather_info()
 ```
 ```monospace
-
+Enter the name of the city: beijing
+Enter the country code (optional): 
+Current time: 2024-11-14 14:01:57
+Weather: clear sky
+Temperature in Celsius: 8.9°C
 ```
 # 13. Setting up a backend service with an interface
 ## 13.1
