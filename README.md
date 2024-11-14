@@ -2053,10 +2053,47 @@ Temperature in Celsius: 8.9°C
 ## 13.1
 Implement a Flask backend service that tells whether a number received as a parameter is a prime number or not. Use the prior prime number exercise as a starting point. For example, a GET request for number 31 is given as: http://127.0.0.1:5000/prime_number/31. The response must be in the format of {"Number":31, "isPrime":true}.
 ```python
+# jsonify:用于将 Python 字典（或其他 JSON 可序列化数据结构）
+# 转换为 JSON 格式，这是用于 Web 通信的标准数据格式。
+from flask import Flask, jsonify
 
+# 创建 Flask 应用程序的实例,该app对象将管理所有路由并处理对不同端点的请求。
+app = Flask(__name__)
+
+# Function to check if a number is prime
+def is_prime(num):
+    if num <= 1:
+        return False
+    elif num == 2:
+        return True
+    elif num % 2 == 0:
+        return False
+    else:
+        for i in range(3, num, 2):
+            if num % i == 0:
+                return False
+        return True
+
+# Route to check if a number is prime
+# @app.route允许为应用程序中的特定功能定义路由（URL 路径）
+# prime_number:基本路径 <int:number>:URL的动态段，充当整数值的占位符。
+# methods=['GET']指定该路由仅响应GET 请求
+@app.route('/prime_number/<int:number>', methods=['GET'])
+
+def prime_number(number):
+    result = is_prime(number)
+    return jsonify({"Number": number, "isPrime": result})
+
+# Run the app
+# app.run():启动 Flask 开发服务器。开始侦听默认本地地址
+# （通常为http://127.0.0.1:5000 ）上的传入请求。
+# 可以通过提供其他参数来自定义主机和端口，例如host='0.0.0.0'或port=8080
+app.run()
 ```
 ```monospace
+http://127.0.0.1:5000/prime_number/31
 
+{"Number":31,"isPrime":true}
 ```
 ## 13.2
 Implement a backend service that gets the ICAO code of an airport and then returns the name and location of the airport in JSON format. The information is fetched from the airport database used on this course. For example, the GET request for EFHK would be: http://127.0.0.1:5000/airport/EFHK. The response must be in the format of: {"ICAO":"EFHK", "Name":"Helsinki-Vantaa Airport", "Location":"Helsinki"}.
